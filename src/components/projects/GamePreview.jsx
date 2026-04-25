@@ -1,4 +1,9 @@
 import { useEffect, useState } from "react";
+// Utility to detect mobile devices
+function isMobileDevice() {
+  if (typeof window === "undefined") return false;
+  return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
+}
 import useInView from "../../hooks/useInView";
 import Button from "../ui/Button";
 
@@ -35,7 +40,9 @@ export default function GamePreview({ project }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-night via-night/45 to-night/20" />
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                <span className="eyebrow-chip">Interactive Preview</span>
+                <span className="eyebrow-chip">
+                  {isMobileDevice() ? "Tap for Preview" : "Interactive Preview"}
+                </span>
                 <h3 className="mt-4 font-display text-2xl font-semibold text-white sm:text-3xl">
                   {supportsEmbed && supportsInlinePreview
                     ? `Load ${project.title}`
@@ -131,7 +138,9 @@ export default function GamePreview({ project }) {
         <div className="flex flex-wrap gap-3">
           {!shouldLoad ? (
             <Button onClick={() => setIsManuallyLoaded(true)} variant="secondary">
-              {supportsEmbed && supportsInlinePreview ? "Load Preview" : "Load Media Preview"}
+              {isMobileDevice()
+                ? (supportsEmbed && supportsInlinePreview ? "Tap for Preview" : "Tap for Media Preview")
+                : (supportsEmbed && supportsInlinePreview ? "Load Preview" : "Load Media Preview")}
             </Button>
           ) : null}
           {launchUrl ? (
