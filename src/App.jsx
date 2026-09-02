@@ -6,8 +6,9 @@ import ContactSection from "./components/portfolio/ContactSection";
 import HeroSection from "./components/portfolio/HeroSection";
 import ProjectSpotlightSection from "./components/portfolio/ProjectSpotlightSection";
 import ProjectsSection from "./components/portfolio/ProjectsSection";
+import ReferencesSection from "./components/portfolio/ReferencesSection";
 import TechnicalHighlightsSection from "./components/portfolio/TechnicalHighlightsSection";
-import { contactLinks, featuredProjects, technicalHighlights } from "./data/portfolioData";
+import { contactLinks, featuredProjects, gamezopReferences, technicalHighlights } from "./data/portfolioData";
 
 const scrollToSection = (sectionId) => {
   document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -52,6 +53,7 @@ export default function App() {
         />
         <ProjectSpotlightSection project={activeProject} />
         <TechnicalHighlightsSection items={technicalHighlights} />
+        <ReferencesSection items={gamezopReferences} />
         <ContactSection links={contactLinks} />
       </main>
 

@@ -19,7 +19,7 @@ export default function AboutSection() {
       <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
         <div className="panel-surface p-6 sm:p-8">
           <p className="text-base leading-8 text-mist/85 sm:text-lg">
-            Over the last 4+ years, I have worked across browser games, XR training simulations, and mobile releases, connecting polished player-facing execution with the backend and platform systems that keep products stable. My recent work at Gamezop centers on performance, monetization, live balancing, retention-oriented decisions, and reusable service worker flows that can be rolled into multiple titles without a fresh setup for each game, while earlier roles sharpened hands-on Unity, Oculus Quest, AR, and end-to-end publishing experience.
+            Over the last 5+ years, I have worked across browser games, XR training simulations, and mobile releases, connecting polished player-facing execution with the backend and platform systems that keep products stable. My recent work at Gamezop centers on performance, monetization, live balancing, retention-oriented decisions, and reusable service worker flows that can be rolled into multiple titles without a fresh setup for each game, while earlier roles sharpened hands-on Unity, Oculus Quest, AR, and end-to-end publishing experience.
           </p>
         </div>
 

@@ -1,10 +1,10 @@
 import Button from "../ui/Button";
 
 const heroMetrics = [
-  { value: "4+", label: "Years making games" },
-  { value: "2M+", label: "Players having fun (hopefully!)" },
-  { value: "60+", label: "Games supported (and counting)" },
-  { value: "40%", label: "Faster load times (less waiting, more playing!)" },
+  { value: "5+", label: "Years making games" },
+  { value: "1.3B+", label: "Total game plays & sessions" },
+  { value: "60+", label: "Games supported & scaled" },
+  { value: "40%", label: "Faster load times with asset staging" },
 ];
 
 const signalCards = [

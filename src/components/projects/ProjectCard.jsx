@@ -30,7 +30,6 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
   const hasPreviewVideo = Boolean(project.previewVideo);
   const hasPreviewImages = Boolean(project.previewImages?.length);
   const hasPoster = Boolean(project.poster);
-  const isCompactInternshipCard = project.embedMode === "internal-demo" && !hasPoster;
   const launchUrl = project.gameUrl ?? project.playStoreUrl;
   const isAndroidProject = project.embedMode === "store-only";
 
@@ -112,18 +111,17 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
         isActive ? "border-cyan/50 shadow-[0_0_0_1px_rgba(101,230,255,0.28),0_24px_60px_rgba(2,8,23,0.6)]" : ""
       }`}
     >
-      {!isCompactInternshipCard ? (
-        <div
-          className="group relative overflow-hidden rounded-[24px] border border-white/8 bg-panelAlt"
-          onMouseEnter={handleEnter}
-          onMouseLeave={handleLeave}
-        >
-          <div className="absolute left-4 top-4 z-20 rounded-full border border-white/10 bg-night/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur">
-            {hasPreviewVideo || hasPreviewImages ? "Hover to preview" : "Featured build"}
-          </div>
+      <div
+        className="group relative overflow-hidden rounded-[24px] border border-white/8 bg-panelAlt"
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
+        <div className="absolute left-4 top-4 z-20 rounded-full border border-white/10 bg-night/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur">
+          {hasPreviewVideo || hasPreviewImages ? "Hover to preview" : "Featured build"}
+        </div>
 
-          <div className="relative aspect-[4/5] overflow-hidden">
-            {hasPoster ? (
+        <div className="relative aspect-[4/5] overflow-hidden">
+          {hasPoster ? (
             <img
               alt={`${project.title} cover art`}
               className={`h-full w-full object-cover transition duration-700 ${
@@ -143,63 +141,62 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
             >
               <div className="absolute inset-x-4 bottom-4 z-10 rounded-full border border-cyan/20 bg-night/70 px-4 py-2 backdrop-blur-sm">
                 <p className="truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
-                  Smart Marine internship modules
+                  {project.title}
                 </p>
               </div>
             </div>
           )}
 
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night via-night/20 to-transparent" />
-            {hasPreviewImages ? (
-              <>
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night via-night/20 to-transparent" />
+          {hasPreviewImages ? (
+            <>
+              <img
+                alt={`${project.title} hover preview`}
+                className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  isHovered
+                    ? isSlideshowTransitioning
+                      ? "scale-[0.985] opacity-100 blur-[10px]"
+                      : "scale-100 opacity-100 blur-0"
+                    : "scale-[1.02] opacity-0 blur-lg"
+                }`}
+                loading="lazy"
+                src={project.previewImages[slideshowIndex]}
+              />
+
+              {previousSlideshowIndex !== null ? (
                 <img
-                  alt={`${project.title} hover preview`}
+                  alt=""
+                  aria-hidden="true"
                   className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    isHovered
-                      ? isSlideshowTransitioning
-                        ? "scale-[0.985] opacity-100 blur-[10px]"
-                        : "scale-100 opacity-100 blur-0"
-                      : "scale-[1.02] opacity-0 blur-lg"
+                    isSlideshowTransitioning
+                      ? "scale-100 opacity-100 blur-0"
+                      : "scale-[1.04] opacity-0 blur-sm"
                   }`}
                   loading="lazy"
-                  src={project.previewImages[slideshowIndex]}
+                  src={project.previewImages[previousSlideshowIndex]}
                 />
+              ) : null}
+            </>
+          ) : null}
 
-                {previousSlideshowIndex !== null ? (
-                  <img
-                    alt=""
-                    aria-hidden="true"
-                    className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                      isSlideshowTransitioning
-                        ? "scale-100 opacity-100 blur-0"
-                        : "scale-[1.04] opacity-0 blur-sm"
-                    }`}
-                    loading="lazy"
-                    src={project.previewImages[previousSlideshowIndex]}
-                  />
-                ) : null}
-              </>
-            ) : null}
-
-            {shouldLoadVideo && hasPreviewVideo ? (
-              <video
-                className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-500 ${
-                  isHovered ? "opacity-100" : "opacity-0"
-                }`}
-                loop
-                muted
-                playsInline
-                poster={project.poster ?? undefined}
-                preload="metadata"
-                ref={videoRef}
-                src={project.previewVideo}
-              />
-            ) : null}
-          </div>
+          {shouldLoadVideo && hasPreviewVideo ? (
+            <video
+              className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-500 ${
+                isHovered ? "opacity-100" : "opacity-0"
+              }`}
+              loop
+              muted
+              playsInline
+              poster={project.poster ?? undefined}
+              preload="metadata"
+              ref={videoRef}
+              src={project.previewVideo}
+            />
+          ) : null}
         </div>
-      ) : null}
+      </div>
 
-      <div className={`${isCompactInternshipCard ? "mt-0" : "mt-6"} flex flex-1 flex-col gap-4`}>
+      <div className="mt-6 flex flex-1 flex-col gap-4">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-cyan/80">{project.kicker}</p>
@@ -210,7 +207,7 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
           </span>
         </div>
 
-        {!isCompactInternshipCard ? <p className="text-sm leading-7 text-muted">{project.description}</p> : null}
+        <p className="text-sm leading-7 text-muted">{project.description}</p>
 
         <div className="flex flex-wrap gap-2">
           {project.stack.map((item) => (

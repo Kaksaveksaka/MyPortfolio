@@ -8,6 +8,11 @@ import firecrackerPoster from "../../Assets/PreviewImage/Firecracker Simulator A
 import fruityPoster from "../../Assets/PreviewImage/Fruity Fiesta/450x800.png";
 import rolloutPoster from "../../Assets/PreviewImage/Rollout/450x800.png";
 import sudokuPoster from "../../Assets/PreviewImage/Sudoku/450x800.png";
+import knifeSliceIcon from "../../Assets/PreviewImage/Knife Slice 3D/icon.png";
+import knifeSlicePreview1 from "../../Assets/PreviewImage/Knife Slice 3D/screenshot-1.webp";
+import knifeSlicePreview2 from "../../Assets/PreviewImage/Knife Slice 3D/screenshot-2.webp";
+import knifeSlicePreview3 from "../../Assets/PreviewImage/Knife Slice 3D/screenshot-3.webp";
+import knifeSlicePreview4 from "../../Assets/PreviewImage/Knife Slice 3D/screenshot-4.webp";
 import chefPreviewVideo from "../../Assets/PreviewVideo/Chef tycon/portrait.mp4";
 import firecrackerPreviewVideo from "../../Assets/PreviewVideo/Firecracker Simulator AR/playstore-preview.mp4";
 import fruityPreviewVideo from "../../Assets/PreviewVideo/Fruity Fiesta/portrait.mp4";
@@ -16,6 +21,7 @@ import smartMarineModuleClipA from "../../Assets/internVRProject/com.oculus.xrst
 import smartMarineModuleClipAAlt from "../../Assets/internVRProject/com.oculus.xrstreamingclient-20220730-145548 - rim.mp4";
 import smartMarineModuleClipB from "../../Assets/internVRProject/com.oculus.xrstreamingclient-20220730-125051 - Trim.mp4";
 import smartMarineOverviewVideo from "../../Assets/internVRProject/movie_039.mp4";
+import smartMarinePoster from "../../Assets/internVRProject/poster.jpg";
 
 const buildGameUrl = (slug, gameId) => `https://www.gamezop.com/en/game/${slug}/${gameId}`;
 
@@ -23,87 +29,118 @@ const rolloutPreviewVideo = "https://static.gamezop.com/HkRMTzJDck7/portrait.mp4
 
 export const featuredProjects = [
   {
-    id: "chef-tycoon",
-    title: "Chef Tycoon",
-    kicker: "Real-time restaurant economy",
+    id: "fruity-fiesta",
+    title: "Fruity Fiesta",
+    kicker: "1.2B+ Plays Casual Phenomenon",
     description:
-      "Built Gamezop's largest 3D web game in Cocos3D with live economy balancing, synced player data, and monetization hooks.",
+      "Connected UI systems, retention loops, and monetization flows for Gamezop's mega-hit casual title with over 1.2 Billion verified plays.",
     summary:
-      "Chef Tycoon combines Cocos3D gameplay, WebSocket and XHR-backed balancing, and account-linked progression so item prices, properties, and inventory stay synced in real time.",
-    standoutMetric: "Gamezop Flagship Title",
-    poster: chefPoster,
-    previewVideo: chefPreviewVideo,
-    gameUrl: buildGameUrl("chef-tycoon", "xqO4nZ6Kt"),
+      "Fruity Fiesta is tuned for hyper-scalable mass engagement: frictionless handoffs between menus and game scenes, juicy feedback states, and high-retention casual loops driving over 1.2 billion gameplays across partner ecosystems.",
+    standoutMetric: "1.2B+ Plays",
+    poster: fruityPoster,
+    previewVideo: fruityPreviewVideo,
+    gameUrl: buildGameUrl("fruity-fiesta", "mKZZW9NXW"),
     embedMode: "external-launch",
-    stack: ["Cocos3D", "WebSocket", "XHR APIs", "Rewarded Ads"],
+    businessUrl: "https://business.gamezop.com/html5-games/Fruity-Fiesta/mKZZW9NXW",
+    stack: ["Phaser 3", "UI Systems", "Monetization", "Analytics"],
     impact: [
-      "Real-time economy powered by WebSocket event streams.",
-      "Login-backed sync keeps prices, properties, and inventory consistent online.",
-      "Reduced startup load time by 40% through smarter asset staging.",
-      "Integrated rewarded and midroll ad flows through the Gamezop SDK.",
-    ],
-  },
-  {
-    id: "sudoku-classic",
-    title: "Sudoku Classic",
-    kicker: "Algorithmic puzzle PWA",
-    description:
-      "Built a Phaser 3 puzzle experience with backtracking-based board generation, responsive layouts, and an offline-first PWA shell.",
-    summary:
-      "Sudoku Classic is tuned for low-friction play with deterministic puzzle generation, portrait and landscape support, and automatic PWA updates when players come back online.",
-    standoutMetric: "Offline-first PWA",
-    poster: sudokuPoster,
-    previewVideo: sudokuPreviewVideo,
-    gameUrl: buildGameUrl("sudoku-classic", "SJgx126Qc0H"),
-    embedMode: "external-launch",
-    storeUrl: "https://play.google.com/store/apps/details?id=com.gamezop.sudoku",
-    stack: ["Phaser 3", "PWA", "Backtracking", "Responsive UI"],
-    impact: [
-      "Gameplay logic built on a backtracking algorithm for robust puzzle validation.",
-      "Fully responsive in both portrait and landscape orientations.",
-      "Offline-first architecture with cached assets and auto update flow.",
-      "Fast resume behavior that protects player state across sessions.",
+      "Supported a live audience reaching over 1.2 Billion total verified plays.",
+      "Optimized UI and gameplay integration for ultra-smooth player retention loops.",
+      "Balanced retention signals with high-performing monetization placements.",
+      "Maintained rock-solid performance across hundreds of distribution partner embeds.",
     ],
   },
   {
     id: "rollout",
     title: "Rollout",
-    kicker: "High-ranking arcade runner",
+    kicker: "114M+ Plays High-Speed Runner",
     description:
-      "Led the full development of Rollout in Cocos3D and pushed it into the top 10 most-played games in a portfolio of 300+ titles.",
+      "Led end-to-end development of Rollout in Cocos3D, scaling it to 114M+ plays and securing top 10 placement across a catalogue of 300+ titles.",
     summary:
-      "Rollout demonstrates end-to-end ownership: gameplay construction, tuning, and iteration tight enough to break into the platform's top tier of engagement.",
-    standoutMetric: "Top 10 of 300+ titles",
+      "Rollout demonstrates complete engineering ownership: 3D gameplay construction, obstacle curve tuning, and performance profiling tight enough to capture over 114 million gameplays.",
+    standoutMetric: "114M+ Plays",
     poster: rolloutPoster,
     previewVideo: rolloutPreviewVideo,
     gameUrl: buildGameUrl("rollout", "HkRMTzJDck7"),
     embedMode: "external-launch",
+    businessUrl: "https://business.gamezop.com/html5-games/Rollout/HkRMTzJDck7",
     stack: ["Cocos3D", "Gameplay Tuning", "LiveOps", "Performance"],
     impact: [
-      "Reached top-10 placement across a catalogue of 300+ games.",
-      "Owned the project from implementation through tuning and release.",
-      "Improved replayability with tighter difficulty and pacing curves.",
-      "Focused on fast scene transitions and low-friction restarts.",
+      "Achieved 114M+ verified plays and top-10 ranking in Gamezop's 300+ game catalog.",
+      "Owned the project from concept to 3D gameplay mechanics, tuning, and release.",
+      "Engineered responsive touch/keyboard steering with low-friction instant restarts.",
+      "Delivered lightweight 60 FPS performance across desktop and mobile browsers.",
     ],
   },
   {
-    id: "fruity-fiesta",
-    title: "Fruity Fiesta",
-    kicker: "Scaled casual game engagement",
+    id: "knife-slice-3d",
+    title: "Knife Slice 3D",
+    kicker: "Google Play 3D Mobile Release",
     description:
-      "Connected UI systems and gameplay loops for a mass-market casual title that served more than 400K monthly active users.",
+      "Designed and published an arcade 3D knife flipping and slicing game on Google Play with realistic physics, tactile blade cutting, and progressive levels.",
     summary:
-      "Fruity Fiesta is about polish and throughput: smoother handoff between menus and gameplay, cleaner feedback states, and reliable retention-oriented UX.",
-    standoutMetric: "one of the top grossing titles",
-    poster: fruityPoster,
-    previewVideo: fruityPreviewVideo,
-    gameUrl: buildGameUrl("fruity-fiesta", "mKZZW9NXW"),
-    embedMode: "external-launch",
-    stack: ["Phaser 3", "UI Systems", "Monetization", "Analytics"],
+      "Knife Slice 3D is a mobile release focused on tactile arcade satisfaction: responsive knife-flipping physics, dynamic obstacle cutting, layered particle bursts, and progressive obstacle challenges tuned for instant hyper-casual play.",
+    standoutMetric: "Google Play",
+    poster: knifeSliceIcon,
+    previewImages: [
+      knifeSlicePreview1,
+      knifeSlicePreview2,
+      knifeSlicePreview3,
+      knifeSlicePreview4,
+    ],
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.silverhook.knifeSlice3D",
+    embedMode: "store-only",
+    stack: ["Unity", "3D Physics", "Android", "Particle FX"],
     impact: [
-      "Supported a live audience of more than 400K monthly active users.",
-      "Improved UI and gameplay integration for cleaner player flows.",
-      "Aligned retention signals with monetization surfaces.",
+      "Published to Google Play with realistic knife rotation physics and touch controls.",
+      "Engineered dynamic cutting feedback, juicy particle effects, and screen shake.",
+      "Designed multi-stage obstacle tracks and blade progression loops.",
+      "Optimized 60 FPS mobile rendering across a wide spectrum of Android devices.",
+    ],
+  },
+  {
+    id: "sudoku-classic",
+    title: "Sudoku Classic",
+    kicker: "9M+ Plays Algorithmic PWA",
+    description:
+      "Built a Phaser 3 puzzle experience with backtracking-based board generation, responsive layouts, and an offline-first PWA shell with 9M+ plays.",
+    summary:
+      "Sudoku Classic is engineered for low-friction brain training with deterministic puzzle generation, dual-orientation responsive canvas, and seamless PWA caching with Google Play release.",
+    standoutMetric: "9M+ Plays",
+    poster: sudokuPoster,
+    previewVideo: sudokuPreviewVideo,
+    gameUrl: buildGameUrl("sudoku-classic", "SJgx126Qc0H"),
+    embedMode: "external-launch",
+    storeUrl: "https://play.google.com/store/apps/details?id=com.gamezop.sudoku",
+    businessUrl: "https://business.gamezop.com/html5-games/Sudoku-Classic/SJgx126Qc0H",
+    stack: ["Phaser 3", "PWA", "Backtracking", "Responsive UI"],
+    impact: [
+      "Scaled to 9M+ verified plays across web, PWA, and Google Play Store.",
+      "Gameplay logic built on an optimized backtracking algorithm for instant puzzle generation.",
+      "Fully responsive in portrait and landscape orientations with offline asset caching.",
+      "Fast resume lifecycle protecting user board state across interruptions.",
+    ],
+  },
+  {
+    id: "chef-tycoon",
+    title: "Chef Tycoon",
+    kicker: "6.1M+ Plays Real-time Economy",
+    description:
+      "Built Gamezop's largest 3D web game in Cocos3D with live economy balancing, account sync, and monetization hooks reaching 6.1M+ plays.",
+    summary:
+      "Chef Tycoon combines Cocos3D gameplay, WebSocket and XHR-backed balancing, and account-linked progression so item prices, properties, and inventory stay synced in real time.",
+    standoutMetric: "6.1M+ Plays",
+    poster: chefPoster,
+    previewVideo: chefPreviewVideo,
+    gameUrl: buildGameUrl("chef-tycoon", "xqO4nZ6Kt"),
+    embedMode: "external-launch",
+    businessUrl: "https://business.gamezop.com/html5-games/Chef-Tycoon/xqO4nZ6Kt",
+    stack: ["Cocos3D", "WebSocket", "XHR APIs", "Rewarded Ads"],
+    impact: [
+      "Generated 6.1M+ verified plays as Gamezop's flagship 3D simulation title.",
+      "Real-time economy powered by WebSocket event streams and secure backend validation.",
+      "Reduced startup load time by 40% through modular asset staging and texture compression.",
+      "Integrated rewarded and midroll ad flows directly through the Gamezop SDK.",
     ],
   },
   {
@@ -160,6 +197,7 @@ export const featuredProjects = [
     summary:
       "This internship work focused on scene setup and a few focused Oculus Quest training modules rather than a large standalone product. The overall clip shows the combined VR environment, while shorter captures cover brief module interactions completed during the internship.",
     standoutMetric: "Internship",
+    poster: smartMarinePoster,
     previewVideo: smartMarineOverviewVideo,
     embedMode: "internal-demo",
     supportingVideos: [
@@ -179,13 +217,65 @@ export const featuredProjects = [
         src: smartMarineModuleClipB,
       },
     ],
-    stack: ["Unity", "VR Training", "hand tracking"],
+    stack: ["Unity", "VR Training", "Hand Tracking"],
     impact: [
       "Contributed multiple small VR modules and their scene setup during an early internship ramp-up.",
       "Used Unity and Quest-based XR workflows without prior production VR experience going in.",
       "Captured one overview demo plus short module clips to document the work completed in the internship window.",
       "Experience added practical grounding in XR interaction flows and headset-oriented scene organization.",
     ],
+  },
+];
+
+export const gamezopReferences = [
+  {
+    id: "fruity-fiesta-ref",
+    title: "Fruity Fiesta",
+    category: "Arcade",
+    verifiedPlays: "1.2B plays",
+    publisher: "Gamezop Business",
+    highlight: "Mass-market casual fruit merge game distributed globally across thousands of publisher networks.",
+    businessUrl: "https://business.gamezop.com/html5-games/Fruity-Fiesta/mKZZW9NXW",
+    gameUrl: "https://www.gamezop.com/en/game/fruity-fiesta/mKZZW9NXW",
+    embedSnippet:
+      '<iframe seamless="seamless" allowtransparency="true" allowfullscreen="true" frameborder="0" style="width: 100%;height: 100%;border: 0px;" src="https://zv1y2i8p.play.gamezop.com/g/mKZZW9NXW"></iframe>',
+  },
+  {
+    id: "rollout-ref",
+    title: "Rollout",
+    category: "Adventure",
+    verifiedPlays: "114M plays",
+    publisher: "Gamezop Business",
+    highlight: "3D arcade runner ranked in top 10 most played titles across Gamezop's 300+ title catalogue.",
+    businessUrl: "https://business.gamezop.com/html5-games/Rollout/HkRMTzJDck7",
+    gameUrl: "https://www.gamezop.com/en/game/rollout/HkRMTzJDck7",
+    embedSnippet:
+      '<iframe seamless="seamless" allowtransparency="true" allowfullscreen="true" frameborder="0" style="width: 100%;height: 100%;border: 0px;" src="https://zv1y2i8p.play.gamezop.com/g/HkRMTzJDck7"></iframe>',
+  },
+  {
+    id: "sudoku-classic-ref",
+    title: "Sudoku Classic",
+    category: "Puzzle & Logic",
+    verifiedPlays: "9M plays",
+    publisher: "Gamezop & Google Play",
+    highlight: "Algorithmic backtracking puzzle engine with offline PWA architecture and Play Store release.",
+    businessUrl: "https://business.gamezop.com/html5-games/Sudoku-Classic/SJgx126Qc0H",
+    gameUrl: "https://www.gamezop.com/en/game/sudoku-classic/SJgx126Qc0H",
+    storeUrl: "https://play.google.com/store/apps/details?id=com.gamezop.sudoku",
+    embedSnippet:
+      '<iframe seamless="seamless" allowtransparency="true" allowfullscreen="true" frameborder="0" style="width: 100%;height: 100%;border: 0px;" src="https://zv1y2i8p.play.gamezop.com/g/SJgx126Qc0H"></iframe>',
+  },
+  {
+    id: "chef-tycoon-ref",
+    title: "Chef Tycoon",
+    category: "Strategy",
+    verifiedPlays: "6.1M plays",
+    publisher: "Gamezop Business",
+    highlight: "Flagship 3D restaurant tycoon with real-time WebSocket economy and rewarded ad monetization.",
+    businessUrl: "https://business.gamezop.com/html5-games/Chef-Tycoon/xqO4nZ6Kt",
+    gameUrl: "https://www.gamezop.com/en/game/chef-tycoon/xqO4nZ6Kt",
+    embedSnippet:
+      '<iframe seamless="seamless" allowtransparency="true" allowfullscreen="true" frameborder="0" style="width: 100%;height: 100%;border: 0px;" src="https://zv1y2i8p.play.gamezop.com/g/xqO4nZ6Kt"></iframe>',
   },
 ];
 
