@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/layout/Header";
 import SiteFooter from "./components/layout/SiteFooter";
 import AboutSection from "./components/portfolio/AboutSection";
@@ -28,6 +28,33 @@ export default function App() {
 
   const activeProject =
     featuredProjects.find((project) => project.id === activeProjectId) ?? featuredProjects[0];
+
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+
+      const targetId = decodeURIComponent(hash.replace(/^#/, ""));
+      const target = document.getElementById(targetId);
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    // First attempt right after mount
+    const timer1 = window.setTimeout(scrollToHash, 100);
+    // Second attempt after layout/media finishes settling
+    const timer2 = window.setTimeout(scrollToHash, 450);
+
+    window.addEventListener("hashchange", scrollToHash);
+
+    return () => {
+      window.clearTimeout(timer1);
+      window.clearTimeout(timer2);
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, []);
 
   const handleSelectProject = (projectId, sectionId) => {
     setActiveProjectId(projectId);
