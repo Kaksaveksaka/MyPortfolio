@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://shoaibkhan.dev/</loc>
+    <loc>https://shoaibkhan-dev.vercel.app/</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://shoaibkhan.dev/#projects</loc>
+    <loc>https://shoaibkhan-dev.vercel.app/#projects</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://shoaibkhan.dev/#about</loc>
+    <loc>https://shoaibkhan-dev.vercel.app/#about</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://shoaibkhan.dev/#highlights</loc>
+    <loc>https://shoaibkhan-dev.vercel.app/#highlights</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://shoaibkhan.dev/#references</loc>
+    <loc>https://shoaibkhan-dev.vercel.app/#references</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://shoaibkhan.dev/#contact</loc>
+    <loc>https://shoaibkhan-dev.vercel.app/#contact</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

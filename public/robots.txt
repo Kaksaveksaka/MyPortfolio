@@ -21,5 +21,18 @@ Allow: /
 User-agent: Discordbot
 Allow: /
 
+# AI Search & LLM Crawlers (ChatGPT, Perplexity, Claude, Gemini)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 # Sitemap Location
-Sitemap: https://shoaibkhan.dev/sitemap.xml
+Sitemap: https://shoaibkhan-dev.vercel.app/sitemap.xml
