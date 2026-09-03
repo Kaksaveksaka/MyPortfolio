@@ -1,0 +1,160 @@
+import { useState } from "react";
+import Section from "../layout/Section";
+import { playClickSound, playHoverSound } from "../../utils/soundEffects";
+
+export default function ExperienceSection({ experiences }) {
+  const [activeExpId, setActiveExpId] = useState(experiences[0]?.id ?? "gamezop");
+
+  return (
+    <Section
+      description="5 years of engineering production games, real-time architectures, live operations, custom Unity tooling, and multi-platform publishing."
+      id="experience"
+      title="Professional Experience &amp; Impact 🚀"
+    >
+      {/* Experience Timeline Tabs / Navigation for quick switching */}
+      <div className="grid gap-8 lg:grid-cols-[0.9fr_1.3fr] lg:items-start">
+        {/* Left Column: Role Selector Cards */}
+        <div className="space-y-3">
+          {experiences.map((exp) => {
+            const isActive = exp.id === activeExpId;
+
+            return (
+              <button
+                aria-selected={isActive}
+                className={`group w-full rounded-2xl border p-5 text-left transition-all duration-200 ${
+                  isActive
+                    ? "border-amber-500 bg-white shadow-cardElevated ring-1 ring-amber-500/20"
+                    : "border-slate-200/90 bg-white/70 hover:border-slate-300 hover:bg-white hover:shadow-cardLight"
+                }`}
+                key={exp.id}
+                onClick={() => {
+                  playClickSound();
+                  setActiveExpId(exp.id);
+                }}
+                onMouseEnter={playHoverSound}
+                type="button"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className={`eyebrow-chip text-[11px] ${isActive ? "bg-amber-100 text-amber-900 border-amber-300" : ""}`}>
+                    {exp.period}
+                  </span>
+                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-gaming text-[11px] font-bold text-slate-600">
+                    {exp.badge}
+                  </span>
+                </div>
+
+                <div className="mt-3">
+                  <h3 className="font-display text-lg font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
+                    {exp.role}
+                  </h3>
+                  <p className="font-gaming text-xs font-bold text-amber-700">
+                    {exp.company}
+                  </p>
+                </div>
+
+                <p className="mt-2 text-xs leading-relaxed text-slate-600 line-clamp-2">
+                  {exp.summary}
+                </p>
+
+                {/* Quick Key Metrics in button */}
+                <div className="mt-3 flex flex-wrap gap-2 pt-2 border-t border-slate-100">
+                  {exp.metrics.slice(0, 2).map((m) => (
+                    <span
+                      className="inline-flex items-center gap-1 font-gaming text-[11px] font-bold text-slate-700"
+                      key={m.label}
+                    >
+                      <span className="text-amber-600 font-extrabold">{m.value}</span>
+                      <span className="text-slate-400 font-normal">{m.label}</span>
+                    </span>
+                  ))}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Right Column: Detailed Experience Dossier */}
+        {(() => {
+          const currentExp = experiences.find((e) => e.id === activeExpId) ?? experiences[0];
+          if (!currentExp) return null;
+
+          return (
+            <div className="panel-surface rounded-3xl p-6 sm:p-8 shadow-cardElevated">
+              {/* Header Info */}
+              <div className="flex flex-wrap items-start justify-between gap-4 border-b border-slate-100 pb-5">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-0.5 font-gaming text-xs font-bold text-amber-900">
+                      {currentExp.type}
+                    </span>
+                    <span className="font-gaming text-xs font-bold text-slate-500">
+                      {currentExp.period}
+                    </span>
+                  </div>
+                  <h3 className="mt-2 font-display text-2xl font-black text-slate-900 sm:text-3xl">
+                    {currentExp.role}
+                  </h3>
+                  <p className="font-gaming text-sm font-bold text-amber-700 sm:text-base">
+                    @ {currentExp.company}
+                  </p>
+                </div>
+
+                {/* Highlight Badges */}
+                <span className="rounded-2xl border border-slate-200 bg-slate-50 px-3.5 py-1.5 font-gaming text-xs font-bold uppercase tracking-wider text-slate-700">
+                  {currentExp.badge}
+                </span>
+              </div>
+
+              {/* Key Quantitative Metrics Grid */}
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {currentExp.metrics.map((metric) => (
+                  <div className="metric-card p-3 text-center" key={metric.label}>
+                    <p className="font-display text-xl font-black text-amber-600 sm:text-2xl">
+                      {metric.value}
+                    </p>
+                    <p className="mt-1 font-gaming text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Responsibilities & Achievements */}
+              <div className="mt-6">
+                <p className="font-gaming text-xs font-black uppercase tracking-wider text-slate-900 mb-3">
+                  Key Responsibilities &amp; Shipped Achievements:
+                </p>
+
+                <ul className="space-y-2.5">
+                  {currentExp.highlights.map((bullet, idx) => (
+                    <li className="flex items-start gap-3 text-xs leading-relaxed text-slate-700 sm:text-sm" key={idx}>
+                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-600" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Stack & Tools */}
+              <div className="mt-6 pt-5 border-t border-slate-100">
+                <p className="font-gaming text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">
+                  Technologies &amp; Domain Expertise
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {currentExp.stack.map((tech) => (
+                    <span
+                      className="rounded-full bg-slate-100 border border-slate-200 px-3 py-1 font-gaming text-xs font-semibold text-slate-700"
+                      key={tech}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+      </div>
+    </Section>
+  );
+}

@@ -3,12 +3,13 @@ import Button from "../ui/Button";
 import profileImage from "../../../Assets/profile.jpg";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Play", href: "#project-details" },
-  { label: "Highlights", href: "#highlights" },
+  { label: "Games", href: "#projects" },
+  { label: "Spotlight", href: "#project-details" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Background", href: "#about" },
   { label: "References", href: "#references" },
-  { label: "Contact", href: "#contact" },
+  { label: "Connect", href: "#contact" },
 ];
 
 export default function Header() {
@@ -44,34 +45,48 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-6 lg:px-8">
       <div
-        className={`mx-auto max-w-7xl border border-white/8 bg-night/80 px-5 py-3 shadow-glow backdrop-blur-xl ${
-          isMenuOpen ? "rounded-[2rem]" : "rounded-full"
-        } md:rounded-full`}
+        className={`relative mx-auto max-w-7xl border border-slate-200/90 bg-white/95 px-4 py-2.5 shadow-cardLight backdrop-blur-xl transition-all duration-200 ${
+          isMenuOpen ? "rounded-2xl" : "rounded-2xl"
+        }`}
       >
-        <div className="flex items-center justify-between gap-4">
-          <a className="group flex items-center gap-3" href="#top" onClick={handleNavigate}>
-            <span className="relative z-10 inline-flex h-10 w-10 overflow-hidden rounded-full border border-cyan/35 bg-cyan/10 shadow-glow transition duration-300 ease-out group-hover:translate-x-8 group-hover:translate-y-16 group-hover:scale-[5] group-hover:border-cyan/60 group-hover:shadow-[0_0_28px_rgba(101,230,255,0.35)]">
-              <img
-                alt="Shoaib Khan profile"
-                className="h-full w-full object-cover object-top transition duration-300 ease-out group-hover:scale-115"
-                loading="eager"
-                src={profileImage}
-              />
-            </span>
+        <div className="flex items-center justify-between gap-3">
+          {/* Avatar & Clean Developer Identity */}
+          <a
+            className="group flex items-center gap-3 shrink-0"
+            href="#top"
+            onClick={handleNavigate}
+          >
+            <div className="relative">
+              <span className="relative inline-flex h-11 w-11 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm transition-transform duration-200 group-hover:scale-105">
+                <img
+                  alt="Shoaib Khan profile"
+                  className="h-full w-full object-cover object-top"
+                  loading="eager"
+                  src={profileImage}
+                />
+              </span>
+            </div>
+
             <div>
-              <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-white">
+              <p className="font-gaming text-sm font-black tracking-tight text-slate-900 group-hover:text-amber-600 transition-colors">
                 Shoaib Khan
               </p>
-              <p className="text-xs text-muted">Game Developer</p>
+              <p className="font-gaming text-xs font-bold text-slate-500">
+                Game Developer · 5 Yrs Exp · 1.3B+ Plays
+              </p>
             </div>
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+          {/* Truly Centered Navigation */}
+          <nav
+            aria-label="Primary"
+            className="absolute left-1/2 -translate-x-1/2 hidden items-center gap-1.5 lg:flex"
+          >
             {navItems.map((item) => (
               <a
-                className="text-sm font-medium text-muted transition hover:text-white"
+                className="rounded-xl px-3.5 py-1.5 font-gaming text-xs font-bold text-slate-700 transition-all hover:bg-slate-100 hover:text-slate-950 active:scale-95"
                 href={item.href}
                 key={item.label}
               >
@@ -80,47 +95,69 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden md:block">
-            <Button href="#contact" variant="secondary">
-              Start a Conversation
-            </Button>
-          </div>
-
-          <button
-            aria-expanded={isMenuOpen}
-            aria-label="Toggle navigation"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-cyan/40 hover:bg-white/10 md:hidden"
-            onClick={() => setIsMenuOpen((current) => !current)}
-            type="button"
-          >
-            <span className="sr-only">Menu</span>
-            <div className="flex flex-col gap-1.5">
-              <span className="h-0.5 w-5 rounded-full bg-current" />
-              <span className="h-0.5 w-5 rounded-full bg-current" />
-              <span className="h-0.5 w-5 rounded-full bg-current" />
+          {/* Right Action: Clean CTA Button */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            <div className="hidden sm:block">
+              <Button
+                href="#contact"
+                variant="primary"
+              >
+                <span>Let's Connect</span>
+              </Button>
             </div>
-          </button>
+
+            {/* Mobile Hamburger Toggle */}
+            <button
+              aria-expanded={isMenuOpen}
+              aria-label="Toggle navigation"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:bg-slate-100 lg:hidden"
+              onClick={() => setIsMenuOpen((current) => !current)}
+              type="button"
+            >
+              <span className="sr-only">Menu</span>
+              <div className="flex flex-col gap-1.5">
+                <span
+                  className={`h-0.5 w-4 rounded-full bg-current transition-transform ${
+                    isMenuOpen ? "rotate-45 translate-y-2" : ""
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-4 rounded-full bg-current transition-opacity ${
+                    isMenuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`h-0.5 w-4 rounded-full bg-current transition-transform ${
+                    isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
 
+        {/* Mobile Navigation Drawer */}
         {isMenuOpen ? (
-          <nav aria-label="Mobile" className="mt-4 grid gap-3 border-t border-white/8 pt-4 md:hidden">
+          <nav aria-label="Mobile" className="mt-3 grid gap-2 border-t border-slate-200 pt-3 lg:hidden">
             {navItems.map((item) => (
               <a
-                className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3 text-sm font-medium text-mist transition hover:border-cyan/40 hover:bg-cyan/10"
+                className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 px-4 py-2.5 font-gaming text-sm font-bold text-slate-800 transition hover:bg-amber-50 hover:text-amber-800"
                 href={item.href}
                 key={item.label}
                 onClick={(event) => handleMobileNavigate(event, item.href)}
               >
-                {item.label}
+                <span>{item.label}</span>
+                <span className="text-amber-600">→</span>
               </a>
             ))}
+
             <Button
-              className="w-full"
+              className="mt-1 w-full"
               href="#contact"
               onClick={(event) => handleMobileNavigate(event, "#contact")}
-              variant="secondary"
+              variant="primary"
             >
-              Start a Conversation
+              Let's Connect
             </Button>
           </nav>
         ) : null}
@@ -128,3 +165,6 @@ export default function Header() {
     </header>
   );
 }
+
+
+

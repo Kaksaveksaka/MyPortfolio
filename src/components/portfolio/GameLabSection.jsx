@@ -5,7 +5,6 @@ export default function GameLabSection({ onSelectProject, project, projects }) {
   return (
     <Section
       description="Playable demos load inline when a provider supports embedding. For Gamezop builds, the section falls back to a media preview and launches the real game in a new tab."
-      eyebrow="Playable Builds"
       id="game-lab"
       title="Play a live game preview"
     >

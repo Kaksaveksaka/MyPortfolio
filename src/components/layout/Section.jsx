@@ -8,18 +8,27 @@ export default function Section({
   title,
 }) {
   return (
-    <section className={`relative scroll-mt-28 py-20 sm:py-24 ${className}`} id={id}>
+    <section className={`relative scroll-mt-24 py-16 sm:py-20 ${className}`} id={id}>
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {(eyebrow || title || description) && (
-          <div className="mb-12 max-w-3xl">
-            {eyebrow ? <p className="section-label">{eyebrow}</p> : null}
+          <div className="mb-10 max-w-3xl">
+            {eyebrow ? (
+              <div className="mb-3 flex items-center gap-2">
+                <span className="eyebrow-chip">
+                  <span>✨</span>
+                  <span>{eyebrow}</span>
+                </span>
+              </div>
+            ) : null}
             {title ? (
-              <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
                 {title}
               </h2>
             ) : null}
             {description ? (
-              <p className="mt-4 text-base leading-8 text-muted sm:text-lg">{description}</p>
+              <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
+                {description}
+              </p>
             ) : null}
           </div>
         )}
@@ -29,3 +38,4 @@ export default function Section({
     </section>
   );
 }
+

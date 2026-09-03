@@ -3,12 +3,21 @@ import Header from "./components/layout/Header";
 import SiteFooter from "./components/layout/SiteFooter";
 import AboutSection from "./components/portfolio/AboutSection";
 import ContactSection from "./components/portfolio/ContactSection";
+import ExperienceSection from "./components/portfolio/ExperienceSection";
 import HeroSection from "./components/portfolio/HeroSection";
 import ProjectSpotlightSection from "./components/portfolio/ProjectSpotlightSection";
 import ProjectsSection from "./components/portfolio/ProjectsSection";
 import ReferencesSection from "./components/portfolio/ReferencesSection";
 import TechnicalHighlightsSection from "./components/portfolio/TechnicalHighlightsSection";
-import { contactLinks, featuredProjects, gamezopReferences, technicalHighlights } from "./data/portfolioData";
+import {
+  contactLinks,
+  educationAndCredentials,
+  featuredProjects,
+  gamezopReferences,
+  professionalExperience,
+  technicalHighlights,
+  technicalSkillsCategories,
+} from "./data/portfolioData";
 
 const scrollToSection = (sectionId) => {
   document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -31,28 +40,26 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-night text-mist selection:bg-cyan/30 selection:text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-6rem] top-20 h-72 w-72 rounded-full bg-cyan/15 blur-3xl" />
-        <div className="absolute right-[-8rem] top-96 h-80 w-80 rounded-full bg-amber/10 blur-3xl" />
-        <div className="absolute left-1/2 top-[44rem] h-72 w-72 -translate-x-1/2 rounded-full bg-lime/10 blur-3xl" />
-      </div>
-
+    <div className="relative min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-amber-100 selection:text-amber-900">
       <Header />
 
       <main className="relative z-10">
         <HeroSection
+          onViewExperience={() => scrollToSection("experience")}
           onViewProjects={() => scrollToSection("projects")}
-          onPlayGames={() => scrollToSection("projects")}
         />
-        <AboutSection />
         <ProjectsSection
           activeProjectId={activeProject.id}
           onViewDetails={(projectId) => handleSelectProject(projectId, "project-details")}
           projects={featuredProjects}
         />
         <ProjectSpotlightSection project={activeProject} />
-        <TechnicalHighlightsSection items={technicalHighlights} />
+        <ExperienceSection experiences={professionalExperience} />
+        <TechnicalHighlightsSection
+          highlights={technicalHighlights}
+          skillsCategories={technicalSkillsCategories}
+        />
+        <AboutSection credentials={educationAndCredentials} />
         <ReferencesSection items={gamezopReferences} />
         <ContactSection links={contactLinks} />
       </main>

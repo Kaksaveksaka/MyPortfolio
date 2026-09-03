@@ -1,23 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
-
-function BrowserIcon() {
-  return (
-    <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <circle cx="12" cy="12" r="8.25" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5M12 3.75c2.2 2.2 3.5 5.11 3.5 8.25S14.2 18.05 12 20.25M12 3.75c-2.2 2.2-3.5 5.11-3.5 8.25S9.8 18.05 12 20.25M6.6 7.5h10.8M6.6 16.5h10.8" />
-    </svg>
-  );
-}
-
-function DownloadIcon() {
-  return (
-    <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v9m0 0 3.75-3.75M12 13.5 8.25 9.75M4.5 15.75v1.125c0 1.864.761 2.625 2.625 2.625h9.75c1.864 0 2.625-.761 2.625-2.625V15.75" />
-    </svg>
-  );
-}
+import { playClickSound, playHoverSound, playLaunchSound } from "../../utils/soundEffects";
 
 export default function ProjectCard({ isActive, onViewDetails, project }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -94,6 +78,7 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
   }, [hasPreviewImages, isHovered, project.previewImages]);
 
   const handleEnter = () => {
+    playHoverSound();
     setIsHovered(true);
 
     if (hasPreviewVideo) {
@@ -107,57 +92,66 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
 
   return (
     <article
-      className={`panel-surface card-hover flex h-full flex-col p-5 sm:p-6 ${
-        isActive ? "border-cyan/50 shadow-[0_0_0_1px_rgba(101,230,255,0.28),0_24px_60px_rgba(2,8,23,0.6)]" : ""
+      className={`group/card relative flex h-full flex-col rounded-3xl border bg-white p-5 shadow-cardLight transition-all duration-200 hover:-translate-y-1 ${
+        isActive
+          ? "border-amber-500 ring-2 ring-amber-400/30 shadow-cardElevated"
+          : "border-slate-200/90 hover:border-slate-300 hover:shadow-cardHover"
       }`}
     >
+      {/* Media Screen Container */}
       <div
-        className="group relative overflow-hidden rounded-[24px] border border-white/8 bg-panelAlt"
+        className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100"
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
       >
-        <div className="absolute left-4 top-4 z-20 rounded-full border border-white/10 bg-night/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur">
-          {hasPreviewVideo || hasPreviewImages ? "Hover to preview" : "Featured build"}
+        {/* Top Metric Badge */}
+        <div className="absolute right-3 top-3 z-20">
+          <span className="rounded-full border border-amber-600 bg-amber-500 px-3 py-0.5 font-gaming text-xs font-black uppercase text-slate-950 shadow-sm">
+            {project.standoutMetric}
+          </span>
         </div>
 
-        <div className="relative aspect-[4/5] overflow-hidden">
+        {/* Media Preview Box */}
+        <div className="relative aspect-[4/5] overflow-hidden bg-slate-100">
           {hasPoster ? (
             <img
               alt={`${project.title} cover art`}
-              className={`h-full w-full object-cover transition duration-700 ${
+              className={`h-full w-full object-cover transition-all duration-500 ${
                 isHovered && (hasPreviewVideo || hasPreviewImages)
                   ? "scale-105 opacity-0"
-                  : "opacity-100 group-hover:scale-105"
+                  : "opacity-100 group-hover/card:scale-105"
               }`}
               loading="lazy"
               src={project.poster}
             />
           ) : (
             <div
-              className={`h-full w-full bg-[radial-gradient(circle_at_top,rgba(101,230,255,0.12),transparent_32%),linear-gradient(160deg,rgba(7,11,27,0.98),rgba(12,18,32,0.95))] transition duration-700 ${
-                isHovered && hasPreviewVideo ? "scale-105 opacity-0" : "opacity-100 group-hover:scale-105"
+              className={`h-full w-full bg-gradient-to-br from-slate-100 to-slate-200 transition-all duration-500 ${
+                isHovered && hasPreviewVideo ? "scale-105 opacity-0" : "opacity-100 group-hover/card:scale-105"
               }`}
               aria-hidden="true"
             >
-              <div className="absolute inset-x-4 bottom-4 z-10 rounded-full border border-cyan/20 bg-night/70 px-4 py-2 backdrop-blur-sm">
-                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90">
+              <div className="absolute inset-x-4 bottom-4 z-10 rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 shadow-sm">
+                <p className="truncate font-display text-sm font-bold text-slate-900">
                   {project.title}
                 </p>
               </div>
             </div>
           )}
 
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-night via-night/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+
+          {/* Slideshow image previews */}
           {hasPreviewImages ? (
             <>
               <img
                 alt={`${project.title} hover preview`}
-                className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-500 ease-out ${
                   isHovered
                     ? isSlideshowTransitioning
-                      ? "scale-[0.985] opacity-100 blur-[10px]"
+                      ? "scale-[0.985] opacity-100 blur-[4px]"
                       : "scale-100 opacity-100 blur-0"
-                    : "scale-[1.02] opacity-0 blur-lg"
+                    : "scale-[1.02] opacity-0 blur-md"
                 }`}
                 loading="lazy"
                 src={project.previewImages[slideshowIndex]}
@@ -167,7 +161,7 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
                 <img
                   alt=""
                   aria-hidden="true"
-                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform,filter] duration-500 ease-out ${
                     isSlideshowTransitioning
                       ? "scale-100 opacity-100 blur-0"
                       : "scale-[1.04] opacity-0 blur-sm"
@@ -179,9 +173,10 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
             </>
           ) : null}
 
+          {/* Hover Video Player */}
           {shouldLoadVideo && hasPreviewVideo ? (
             <video
-              className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-500 ${
+              className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
                 isHovered ? "opacity-100" : "opacity-0"
               }`}
               loop
@@ -196,39 +191,60 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-1 flex-col gap-4">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-cyan/80">{project.kicker}</p>
-            <h3 className="mt-2 font-display text-2xl font-semibold text-white">{project.title}</h3>
-          </div>
-          <span className="rounded-full border border-lime/20 bg-lime/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-lime">
-            {project.standoutMetric}
-          </span>
+      {/* Card Content */}
+      <div className="mt-5 flex flex-1 flex-col gap-3">
+        <div>
+          <p className="font-gaming text-xs font-bold uppercase tracking-wider text-amber-700">
+            {project.kicker}
+          </p>
+          <h3 className="mt-1 font-display text-2xl font-bold text-slate-900 group-hover/card:text-amber-700 transition-colors">
+            {project.title}
+          </h3>
         </div>
 
-        <p className="text-sm leading-7 text-muted">{project.description}</p>
+        <p className="text-sm leading-relaxed text-slate-600">
+          {project.description}
+        </p>
 
-        <div className="flex flex-wrap gap-2">
-          {project.stack.map((item) => (
-            <Badge key={item}>{item}</Badge>
+        {/* Engine Tech Badges */}
+        <div className="flex flex-wrap gap-1.5 pt-1">
+          {project.stack.map((item, idx) => (
+            <Badge
+              key={item}
+              variant={idx === 0 ? "amber" : idx === 1 ? "cobalt" : idx === 2 ? "rose" : "purple"}
+            >
+              {item}
+            </Badge>
           ))}
         </div>
 
-        <div className="mt-auto flex flex-col gap-3 pt-2 sm:flex-row">
+        {/* 3D Action Buttons */}
+        <div className="mt-auto flex flex-col gap-2.5 pt-4 sm:flex-row">
           {launchUrl ? (
-            <Button className="sm:flex-1" external href={launchUrl}>
-              <span className="mr-2 inline-flex">
-                {isAndroidProject ? <DownloadIcon /> : <BrowserIcon />}
-              </span>
-              {isAndroidProject ? "Download" : "Play"}
+            <Button
+              className="sm:flex-1 text-sm font-black"
+              external
+              href={launchUrl}
+              onClick={() => playLaunchSound()}
+              variant={isAndroidProject ? "emerald" : "primary"}
+            >
+              <span>{isAndroidProject ? "📱 Google Play" : "🕹️ Play Game"}</span>
             </Button>
           ) : null}
-          <Button className="sm:flex-1" onClick={() => onViewDetails(project.id)} variant="secondary">
-            View Details
+
+          <Button
+            className="sm:flex-1 text-sm"
+            onClick={() => {
+              playClickSound();
+              onViewDetails(project.id);
+            }}
+            variant="secondary"
+          >
+            <span>🔍 Details</span>
           </Button>
         </div>
       </div>
     </article>
   );
 }
+

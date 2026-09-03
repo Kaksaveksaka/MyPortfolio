@@ -1,143 +1,269 @@
+import { useState } from "react";
 import Section from "../layout/Section";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
+import { playClickSound, playHoverSound, playLaunchSound } from "../../utils/soundEffects";
 
-function BrowserIcon() {
+function ExternalIcon() {
   return (
-    <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <circle cx="12" cy="12" r="8.25" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5M12 3.75c2.2 2.2 3.5 5.11 3.5 8.25S14.2 18.05 12 20.25M12 3.75c-2.2 2.2-3.5 5.11-3.5 8.25S9.8 18.05 12 20.25M6.6 7.5h10.8M6.6 16.5h10.8" />
-    </svg>
-  );
-}
-
-function DownloadIcon() {
-  return (
-    <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v9m0 0 3.75-3.75M12 13.5 8.25 9.75M4.5 15.75v1.125c0 1.864.761 2.625 2.625 2.625h9.75c1.864 0 2.625-.761 2.625-2.625V15.75" />
+    <svg aria-hidden="true" className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline points="15 3 21 3 21 9" />
+      <line strokeLinecap="round" strokeLinejoin="round" x1="10" x2="21" y1="14" y2="3" />
     </svg>
   );
 }
 
 export default function ProjectSpotlightSection({ project }) {
+  const [activeTab, setActiveTab] = useState("overview");
   const launchUrl = project.gameUrl ?? project.playStoreUrl;
   const isAndroidProject = project.embedMode === "store-only";
   const hasPoster = Boolean(project.poster);
   const hasPreviewVideo = Boolean(project.previewVideo);
+  const hasPreviewImages = Boolean(project.previewImages?.length);
   const hasSupportingVideos = Boolean(project.supportingVideos?.length);
 
   return (
     <Section
-      description="A focused breakdown of the currently selected project from the grid above."
-      eyebrow="Project Detail"
+      description="Interactive breakdown, engine architecture, and behind-the-scenes engineering for the selected title."
       id="project-details"
-      title={`Selected build: ${project.title}`}
+      title={`Deep Dive: ${project.title} 🎮`}
     >
-      <div className="grid gap-8 xl:grid-cols-[0.7fr_1.3fr] xl:items-center">
-        <div className="panel-surface overflow-hidden p-4 sm:p-5">
-          <div className="overflow-hidden rounded-[24px] border border-white/8 bg-panelAlt">
-            {hasPoster ? (
-              <img
-                alt={`${project.title} poster`}
-                className="aspect-[4/5] h-full w-full object-cover"
-                loading="lazy"
-                src={project.poster}
-              />
-            ) : hasPreviewVideo ? (
-              <video
-                autoPlay
-                className="aspect-[4/5] h-full w-full object-cover"
-                controls
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                src={project.previewVideo}
-              />
-            ) : (
-              <div className="flex aspect-[4/5] h-full w-full items-end bg-[radial-gradient(circle_at_top,rgba(101,230,255,0.22),transparent_36%),linear-gradient(160deg,rgba(7,11,27,0.96),rgba(13,22,39,0.94))] p-6">
-                <div className="rounded-3xl border border-cyan/20 bg-white/5 p-5 backdrop-blur-sm">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan/80">Smart Marine</p>
-                  <p className="mt-3 font-display text-3xl font-semibold text-white">VR Internship Modules</p>
+      <div className="panel-surface rounded-3xl p-6 sm:p-8 shadow-cardElevated">
+        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          {/* Left Column: Screen Monitor */}
+          <div className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50 p-2 shadow-sm">
+            {/* Video or Image Screen */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-slate-950 border border-slate-200 flex items-center justify-center">
+              {hasPreviewVideo ? (
+                <video
+                  autoPlay
+                  className="h-full w-full object-contain"
+                  controls
+                  key={project.previewVideo}
+                  loop
+                  muted
+                  playsInline
+                  poster={project.poster ?? undefined}
+                  preload="metadata"
+                  src={project.previewVideo}
+                />
+              ) : hasPreviewImages ? (
+                <div className="relative h-full w-full">
+                  <img
+                    alt={`${project.title} screenshot`}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    src={project.previewImages[0]}
+                  />
+                  {project.previewImages.length > 1 && (
+                    <div className="absolute bottom-3 left-3 right-3 flex justify-center gap-1.5 bg-slate-950/70 p-2 rounded-xl backdrop-blur-sm">
+                      {project.previewImages.map((img, i) => (
+                        <img
+                          alt=""
+                          className="h-11 w-11 object-cover rounded-lg border border-white/30"
+                          key={i}
+                          src={img}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : hasPoster ? (
+                <img
+                  alt={`${project.title} poster`}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  src={project.poster}
+                />
+              ) : (
+                <div className="flex h-full w-full items-end bg-gradient-to-br from-slate-100 to-slate-200 p-6">
+                  <div className="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm">
+                    <p className="font-gaming text-xs font-bold uppercase text-amber-700">Project Demo</p>
+                    <p className="mt-1 font-display text-2xl font-bold text-slate-900">{project.title}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Bottom Screen Bar */}
+            <div className="mt-2.5 flex items-center justify-between px-2 pt-1 font-gaming text-xs font-bold text-slate-600">
+              <span className="text-amber-700">{project.standoutMetric}</span>
+              <span className="text-blue-700">Engine: {project.stack[0]}</span>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Tab Inspector */}
+          <div className="flex flex-col">
+            {/* Top Badges & Title */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="eyebrow-chip">{project.kicker}</span>
+              <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-0.5 font-gaming text-xs font-bold uppercase text-emerald-800">
+                {project.standoutMetric}
+              </span>
+            </div>
+
+            <h3 className="mt-4 font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
+              {project.title}
+            </h3>
+
+            {/* Navigation Tabs */}
+            <div className="mt-6 flex flex-wrap gap-2 border-b border-slate-200 pb-3">
+              {[
+                { id: "overview", label: "🎮 01 // Overview" },
+                { id: "architecture", label: "⚡ 02 // Engineering & LiveOps" },
+                { id: "telemetry", label: "🛠️ 03 // Tech Stack" },
+              ].map((tab) => {
+                const isSelected = activeTab === tab.id;
+                return (
+                  <button
+                    className={`rounded-xl border px-4 py-2 font-gaming text-xs font-black uppercase tracking-wider transition-all duration-150 active:scale-95 ${
+                      isSelected
+                        ? "border-amber-500 bg-amber-500 text-slate-950 shadow-sm"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                    }`}
+                    key={tab.id}
+                    onClick={() => {
+                      playClickSound();
+                      setActiveTab(tab.id);
+                    }}
+                    onMouseEnter={playHoverSound}
+                    type="button"
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Tab Contents */}
+            <div className="mt-5 min-h-[160px]">
+              {activeTab === "overview" && (
+                <div className="space-y-4">
+                  <p className="text-base leading-relaxed text-slate-700">
+                    {project.summary}
+                  </p>
+                  <p className="text-sm leading-relaxed text-slate-500">
+                    {project.description}
+                  </p>
+                </div>
+              )}
+
+              {activeTab === "architecture" && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {project.impact.map((entry, idx) => (
+                    <div className="metric-card p-4" key={entry}>
+                      <div className="flex items-center gap-1.5 mb-1.5 text-xs font-bold text-amber-700">
+                        <span>HIGHLIGHT {idx + 1}</span>
+                      </div>
+                      <p className="text-sm leading-relaxed text-slate-700">{entry}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {activeTab === "telemetry" && (
+                <div className="space-y-4">
+                  <p className="font-gaming text-xs font-bold uppercase text-slate-500">
+                    Technology &amp; Engine Stack
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.stack.map((item, idx) => (
+                      <Badge
+                        key={item}
+                        variant={idx === 0 ? "amber" : idx === 1 ? "cobalt" : idx === 2 ? "rose" : "purple"}
+                      >
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {project.businessUrl && (
+                    <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                      <p className="font-gaming text-sm font-bold text-slate-900">
+                        🏆 Official Gamezop Business Listing
+                      </p>
+                      <p className="mt-1 text-xs text-slate-600">
+                        Verified mass-market catalogue game distributed globally to hundreds of publishers.
+                      </p>
+                      <a
+                        className="mt-3 inline-flex items-center gap-1.5 font-gaming text-xs font-bold text-amber-700 hover:underline"
+                        href={project.businessUrl}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <span>View Business Listing</span>
+                        <ExternalIcon />
+                      </a>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* CTAs */}
+            <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-slate-200 pt-5">
+              {launchUrl ? (
+                <Button
+                  className="px-6 py-3 text-sm font-black"
+                  external
+                  href={launchUrl}
+                  onClick={() => playLaunchSound()}
+                  variant={isAndroidProject ? "emerald" : "primary"}
+                >
+                  <span>{isAndroidProject ? "📱 Download on Google Play" : "🕹️ Launch & Play Now"}</span>
+                </Button>
+              ) : null}
+
+              {project.storeUrl && project.gameUrl ? (
+                <Button
+                  external
+                  href={project.storeUrl}
+                  onClick={() => playLaunchSound()}
+                  variant="secondary"
+                >
+                  <span>📱 Google Play Store</span>
+                </Button>
+              ) : null}
+            </div>
+
+            {/* Supporting VR Videos (if present) */}
+            {hasSupportingVideos ? (
+              <div className="mt-8 border-t border-slate-200 pt-6">
+                <div className="mb-3 flex items-center justify-between">
+                  <p className="font-gaming text-xs font-bold uppercase text-amber-700">
+                    Supporting Quest VR Captures
+                  </p>
+                  <p className="text-xs text-slate-500">Oculus Quest</p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {project.supportingVideos.map((clip) => (
+                    <div className="metric-card overflow-hidden p-0" key={clip.src}>
+                      <video
+                        autoPlay
+                        className="aspect-video w-full object-cover bg-slate-950"
+                        controls
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        src={clip.src}
+                      />
+                      <div className="p-3">
+                        <p className="font-gaming text-xs font-bold text-slate-900">{clip.title}</p>
+                        <p className="mt-1 text-[11px] text-slate-500">{clip.note}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            )}
-          </div>
-        </div>
-
-        <div className="panel-surface p-6 sm:p-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="eyebrow-chip">{project.kicker}</span>
-            <span className="rounded-full border border-lime/20 bg-lime/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-lime">
-              {project.standoutMetric}
-            </span>
-          </div>
-
-          <h3 className="mt-6 font-display text-3xl font-semibold text-white sm:text-4xl">
-            {project.title}
-          </h3>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-muted sm:text-lg">{project.summary}</p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.stack.map((item) => (
-              <Badge key={item}>{item}</Badge>
-            ))}
-          </div>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {project.impact.map((entry) => (
-              <div className="metric-card" key={entry}>
-                <p className="text-sm leading-7 text-mist/85">{entry}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            {launchUrl ? (
-              <Button external href={launchUrl}>
-                <span className="mr-2 inline-flex">
-                  {isAndroidProject ? <DownloadIcon /> : <BrowserIcon />}
-                </span>
-                {isAndroidProject ? "Download" : "Play"}
-              </Button>
-            ) : null}
-            {project.storeUrl && project.gameUrl ? (
-              <Button external href={project.storeUrl} variant="secondary">
-                Sudoku on Google Play
-              </Button>
             ) : null}
           </div>
-
-          {hasSupportingVideos ? (
-            <div className="mt-10 border-t border-white/8 pt-8">
-              <div className="mb-4 flex items-center justify-between gap-4">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan/80">Supporting clips</p>
-                <p className="text-xs uppercase tracking-[0.16em] text-muted">Brief internship module captures</p>
-              </div>
-
-              <div className="grid gap-4 lg:grid-cols-3">
-                {project.supportingVideos.map((clip) => (
-                  <div className="metric-card overflow-hidden p-0" key={clip.src}>
-                    <video
-                      autoPlay
-                      className="aspect-video w-full object-cover"
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      src={clip.src}
-                    />
-                    <div className="p-4">
-                      <p className="text-sm font-semibold text-white">{clip.title}</p>
-                      <p className="mt-2 text-sm leading-6 text-mist/75">{clip.note}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : null}
         </div>
       </div>
     </Section>
   );
 }
+
+

@@ -1,0 +1,18 @@
+{
+  "short_name": "ShoaibKhan",
+  "name": "Shoaib Khan | Game Developer & Systems Architect",
+  "description": "Game Developer & Systems Architect portfolio with 1.3B+ verified plays.",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#030712",
+  "theme_color": "#00f0ff",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["games", "portfolio", "entertainment"]
+}
