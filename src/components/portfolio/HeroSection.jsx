@@ -44,7 +44,7 @@ export default function HeroSection({ onViewProjects, onViewExperience }) {
             </div>
 
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl xl:text-6xl">
-              Crafting Games That <span className="text-amber-600">Bring Joy to Billions</span>
+              Crafting Games That <span className="text-amber-600">Bring Joy to Millions</span>
             </h1>
 
             <p className="mt-3 font-gaming text-base font-bold text-slate-800 sm:text-lg">
