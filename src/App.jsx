@@ -40,7 +40,16 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-amber-100 selection:text-amber-900">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#f8fafc] text-slate-900 selection:bg-amber-100 selection:text-amber-900">
+      {/* Pure Studio Ambient Lighting Gradients (Zero faux-assets) */}
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden select-none">
+        <div className="absolute -top-32 -left-32 h-[560px] w-[560px] rounded-full bg-gradient-to-br from-amber-200/40 via-orange-100/25 to-transparent blur-3xl animate-aurora-breathe" />
+        <div className="absolute -top-24 -right-24 h-[540px] w-[540px] rounded-full bg-gradient-to-bl from-blue-200/30 via-indigo-100/20 to-transparent blur-3xl animate-aurora-drift" />
+        <div className="hidden lg:block absolute top-[42%] -right-32 h-[580px] w-[580px] rounded-full bg-gradient-to-l from-emerald-100/35 via-teal-50/20 to-transparent blur-3xl animate-aurora-breathe" />
+        <div className="hidden lg:block absolute top-[65%] -left-32 h-[540px] w-[540px] rounded-full bg-gradient-to-r from-blue-100/30 via-slate-100/20 to-transparent blur-3xl animate-aurora-drift" />
+        <div className="absolute -bottom-36 left-1/2 -translate-x-1/2 h-[460px] w-[800px] rounded-full bg-gradient-to-t from-amber-100/35 via-rose-50/20 to-transparent blur-3xl animate-aurora-breathe" />
+      </div>
+
       <Header />
 
       <main className="relative z-10">

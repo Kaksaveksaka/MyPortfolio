@@ -74,4 +74,44 @@ body::before {
   }
 }
 
+/* Ambient Studio Aurora Mesh Lighting Keyframes */
+@keyframes aurora-breathe {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.08) translate(12px, -14px);
+    opacity: 1;
+  }
+}
+
+@keyframes aurora-drift {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.06) translate(-14px, 14px);
+    opacity: 0.95;
+  }
+}
+
+.animate-aurora-breathe {
+  animation: aurora-breathe 16s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-aurora-drift {
+  animation: aurora-drift 20s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-breathe,
+  .animate-aurora-drift {
+    animation: none !important;
+  }
+}
+
 

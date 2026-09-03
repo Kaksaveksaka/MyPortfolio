@@ -102,7 +102,10 @@ export default function HeroSection({ onViewProjects, onViewExperience }) {
 
         {/* Right Column: Systems & Craft Dossier */}
         <div className="flex flex-col">
-          <div className="panel-surface rounded-3xl p-6 sm:p-7 shadow-cardElevated flex flex-col justify-between h-full">
+          <div className="panel-surface rounded-3xl p-6 sm:p-7 shadow-cardElevated flex flex-col justify-between h-full relative overflow-hidden">
+            {/* Sleek Studio Top Gradient Bar & Corner Ambient Aura */}
+            <div className="pointer-events-none absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-orange-400 to-indigo-500 opacity-80" />
+            <div className="pointer-events-none absolute -top-16 -right-16 h-36 w-36 rounded-full bg-gradient-to-br from-amber-200/40 via-orange-200/20 to-transparent blur-2xl" />
             <div>
               <div className="border-b border-slate-100 pb-3">
                 <p className="font-gaming text-xs font-black uppercase tracking-wider text-amber-700">
