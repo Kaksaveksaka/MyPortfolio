@@ -21,12 +21,12 @@ export default function Section({
               </div>
             ) : null}
             {title ? (
-              <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              <h2 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-5xl">
                 {title}
               </h2>
             ) : null}
             {description ? (
-              <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
+              <p className="mt-3 text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
                 {description}
               </p>
             ) : null}

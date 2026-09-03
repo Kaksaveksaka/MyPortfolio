@@ -27,10 +27,26 @@ html {
   background: #94a3b8;
 }
 
+html.dark ::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border: 2px solid #0b1120;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
 body {
   min-height: 100vh;
   background-color: #f8fafc;
-  @apply font-sans text-ink antialiased selection:bg-amber-100 selection:text-amber-900;
+  @apply font-sans text-ink antialiased selection:bg-amber-100 selection:text-amber-900 transition-colors duration-200;
+}
+
+html.dark body {
+  background-color: #0b1120;
+  @apply text-slate-100 selection:bg-amber-950/60 selection:text-amber-300;
 }
 
 /* Subtle Geometric Paper Dot Grid */
@@ -44,27 +60,31 @@ body::before {
   background-size: 24px 24px;
 }
 
+html.dark body::before {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+}
+
 #root {
   position: relative;
   z-index: 1;
 }
 
 @layer components {
-  /* Crisp Light Surface Panel */
+  /* Crisp Surface Panel with Dark Mode Support */
   .panel-surface {
-    @apply relative rounded-3xl border border-slate-200/90 bg-white shadow-cardLight transition-all duration-300;
+    @apply relative rounded-3xl border border-slate-200/90 bg-white shadow-cardLight transition-all duration-300 dark:border-slate-800/90 dark:bg-slate-900/90 dark:shadow-[0_4px_25px_-4px_rgba(0,0,0,0.5)];
   }
 
   .panel-surface:hover {
-    @apply border-slate-300 shadow-cardElevated;
+    @apply border-slate-300 shadow-cardElevated dark:border-slate-700 dark:shadow-[0_10px_35px_-4px_rgba(0,0,0,0.6)];
   }
 
   .eyebrow-chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-50 px-3.5 py-1 font-gaming text-xs font-black uppercase tracking-wider text-amber-700 shadow-sm;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-50 px-3.5 py-1 font-gaming text-xs font-black uppercase tracking-wider text-amber-700 shadow-sm dark:border-amber-500/30 dark:bg-amber-950/40 dark:text-amber-400;
   }
 
   .metric-card {
-    @apply relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-4 shadow-cardLight transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-cardElevated;
+    @apply relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-4 shadow-cardLight transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-cardElevated dark:border-slate-800/90 dark:bg-slate-900/90 dark:hover:border-slate-700;
   }
 }
 

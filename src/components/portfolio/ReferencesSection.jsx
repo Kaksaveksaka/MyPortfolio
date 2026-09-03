@@ -21,13 +21,13 @@ export default function ReferencesSection({ items }) {
       <div className="panel-surface rounded-3xl overflow-x-auto p-4 sm:px-6 sm:py-5 shadow-cardLight">
         <div className="flex min-w-max items-center justify-between gap-4 lg:min-w-0">
           {/* Label indicator */}
-          <div className="flex items-center gap-2.5 shrink-0 pr-4 border-r border-slate-200">
+          <div className="flex items-center gap-2.5 shrink-0 pr-4 border-r border-slate-200 dark:border-slate-800">
             <span className="text-xl">🏆</span>
             <div>
-              <p className="font-gaming text-xs font-black uppercase text-amber-700">
+              <p className="font-gaming text-xs font-black uppercase text-amber-700 dark:text-amber-400">
                 Gamezop Business
               </p>
-              <p className="text-[10px] text-slate-500">Verified Distribution</p>
+              <p className="text-[10px] text-slate-500 dark:text-slate-400">Verified Distribution</p>
             </div>
           </div>
 
@@ -35,21 +35,21 @@ export default function ReferencesSection({ items }) {
           <div className="flex flex-1 items-center justify-around gap-3 sm:gap-4">
             {items.map((item, index) => (
               <div className="flex items-center gap-3 sm:gap-4" key={item.id}>
-                {index > 0 && <span className="text-slate-300 select-none">·</span>}
+                {index > 0 && <span className="text-slate-300 dark:text-slate-700 select-none">·</span>}
 
                 <a
-                  className="group flex items-center gap-2 rounded-2xl border border-slate-200/90 bg-slate-50 px-3.5 py-2 transition-all hover:border-amber-400 hover:bg-white hover:shadow-sm active:scale-95"
+                  className="group flex items-center gap-2 rounded-2xl border border-slate-200/90 bg-slate-50 px-3.5 py-2 transition-all hover:border-amber-400 hover:bg-white hover:shadow-sm active:scale-95 dark:border-slate-800 dark:bg-slate-800/60 dark:hover:border-amber-500/50 dark:hover:bg-slate-800"
                   href={item.businessUrl}
                   onMouseEnter={playHoverSound}
                   rel="noreferrer"
                   target="_blank"
                   title={`View ${item.title} on Gamezop Business (${item.verifiedPlays})`}
                 >
-                  <span className="font-gaming text-xs font-bold text-slate-900 transition group-hover:text-amber-700">
+                  <span className="font-gaming text-xs font-bold text-slate-900 dark:text-white transition group-hover:text-amber-700 dark:group-hover:text-amber-400">
                     {item.title}
                   </span>
 
-                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 font-display text-xs font-black text-emerald-800">
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 font-display text-xs font-black text-emerald-800 dark:border-emerald-500/30 dark:bg-emerald-950/40 dark:text-emerald-400">
                     {item.verifiedPlays}
                   </span>
 

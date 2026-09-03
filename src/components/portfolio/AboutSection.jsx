@@ -56,21 +56,21 @@ export default function AboutSection({ credentials }) {
         <div className="space-y-6">
           <div className="panel-surface rounded-3xl p-6 sm:p-8 shadow-cardElevated">
             <div className="flex items-center gap-2 mb-4">
-              <span className="font-gaming text-xs font-black uppercase tracking-wider text-amber-700">
+              <span className="font-gaming text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400">
                 PROFILE &amp; BACKGROUND
               </span>
             </div>
             
-            <p className="text-base leading-relaxed text-slate-800 sm:text-lg">
-              Over the past <span className="font-bold text-slate-950">5 years</span>, I have specialized as a Game Developer and Systems Engineer building games across <span className="font-bold text-slate-950">Unity, HTML5, Mobile, and XR platforms</span>. At <span className="font-bold text-slate-950">Gamezop</span>, I support an ecosystem of 300+ games reaching 45M+ monthly users and have owned flagship 3D titles and platform tooling.
+            <p className="text-base leading-relaxed text-slate-800 dark:text-slate-200 sm:text-lg">
+              Over the past <span className="font-bold text-slate-950 dark:text-white">5 years</span>, I have specialized as a Game Developer and Systems Engineer building games across <span className="font-bold text-slate-950 dark:text-white">Unity, HTML5, Mobile, and XR platforms</span>. At <span className="font-bold text-slate-950 dark:text-white">Gamezop</span>, I support an ecosystem of 300+ games reaching 45M+ monthly users and have owned flagship 3D titles and platform tooling.
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+            <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">
               My engineering spans the full spectrum of production: from writing responsive player controls, AI customer systems, and 3D physics, to architecting service-worker cache rollouts supporting 200+ games, developing Android AdTech mediation SDKs published to Maven Central, and building custom Unity Editor tools that speed up level design and multi-store publishing.
             </p>
 
             {/* Quick Engine & Language Badges */}
-            <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-slate-100">
+            <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800">
               {[
                 "Unity",
                 "C#",
@@ -84,7 +84,7 @@ export default function AboutSection({ credentials }) {
                 "Oculus Quest",
               ].map((badge) => (
                 <span
-                  className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 font-gaming text-xs font-bold text-amber-900"
+                  className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 font-gaming text-xs font-bold text-amber-900 dark:border-amber-500/30 dark:bg-amber-950/40 dark:text-amber-300"
                   key={badge}
                 >
                   {badge}
@@ -98,10 +98,10 @@ export default function AboutSection({ credentials }) {
             {careerStats.map((stat) => (
               <div className="metric-card text-center" key={stat.label}>
                 <span className="text-xl">{stat.icon}</span>
-                <p className="mt-1 font-display text-2xl font-black text-amber-600 sm:text-3xl">
+                <p className="mt-1 font-display text-2xl font-black text-amber-600 dark:text-amber-400 sm:text-3xl">
                   {stat.metric}
                 </p>
-                <p className="mt-1 font-gaming text-xs font-bold text-slate-500">
+                <p className="mt-1 font-gaming text-xs font-bold text-slate-500 dark:text-slate-400">
                   {stat.label}
                 </p>
               </div>
@@ -111,8 +111,8 @@ export default function AboutSection({ credentials }) {
           {/* Education & Certifications & Languages Panel */}
           {education && (
             <div className="panel-surface rounded-3xl p-6 sm:p-7 shadow-cardElevated">
-              <div className="border-b border-slate-100 pb-3">
-                <p className="font-gaming text-xs font-black uppercase tracking-wider text-amber-700">
+              <div className="border-b border-slate-100 dark:border-slate-800 pb-3">
+                <p className="font-gaming text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400">
                   EDUCATION &amp; CREDENTIALS
                 </p>
               </div>
@@ -121,45 +121,45 @@ export default function AboutSection({ credentials }) {
               <div className="mt-4">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <h4 className="font-display text-base font-bold text-slate-900">
+                    <h4 className="font-display text-base font-bold text-slate-900 dark:text-white">
                       {education.degree}
                     </h4>
-                    <p className="font-gaming text-xs font-bold text-amber-700">
+                    <p className="font-gaming text-xs font-bold text-amber-700 dark:text-amber-400">
                       {education.institution}
                     </p>
                   </div>
-                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-gaming text-xs font-bold text-slate-600">
+                  <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 font-gaming text-xs font-bold text-slate-600 dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300">
                     {education.period}
                   </span>
                 </div>
-                <p className="mt-2 text-xs text-slate-600">
+                <p className="mt-2 text-xs text-slate-600 dark:text-slate-400">
                   {education.details}
                 </p>
               </div>
 
               {/* Certifications Grid */}
-              <div className="mt-5 pt-4 border-t border-slate-100">
+              <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
                 <p className="font-gaming text-[11px] font-black uppercase tracking-wider text-slate-400 mb-3">
                   Certifications &amp; Industry Programs
                 </p>
                 <div className="grid gap-2 sm:grid-cols-2">
                   {certifications?.map((cert) => (
                     <div
-                      className="rounded-xl border border-slate-200/90 bg-slate-50/70 p-3"
+                      className="rounded-xl border border-slate-200/90 bg-slate-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/50"
                       key={cert.title}
                     >
                       <div className="flex items-center justify-between gap-1">
-                        <span className="font-gaming text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/60">
+                        <span className="font-gaming text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200/60 dark:text-amber-400 dark:bg-amber-950/40 dark:border-amber-500/30">
                           {cert.tag}
                         </span>
                         <span className="font-gaming text-[10px] text-slate-400 font-semibold">
                           {cert.date}
                         </span>
                       </div>
-                      <p className="mt-1.5 font-display text-xs font-bold text-slate-900 leading-snug">
+                      <p className="mt-1.5 font-display text-xs font-bold text-slate-900 dark:text-white leading-snug">
                         {cert.title}
                       </p>
-                      <p className="mt-0.5 text-[11px] text-slate-500 font-medium">
+                      <p className="mt-0.5 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                         {cert.organization}
                       </p>
                     </div>
@@ -168,18 +168,18 @@ export default function AboutSection({ credentials }) {
               </div>
 
               {/* Languages */}
-              <div className="mt-5 pt-4 border-t border-slate-100">
+              <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
                 <p className="font-gaming text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2">
                   Spoken Languages
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {languages?.map((lang) => (
                     <div
-                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-gaming"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-gaming dark:border-slate-700 dark:bg-slate-800"
                       key={lang.language}
                     >
-                      <span className="font-bold text-slate-800">{lang.language}:</span>
-                      <span className="text-slate-500">{lang.proficiency}</span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200">{lang.language}:</span>
+                      <span className="text-slate-500 dark:text-slate-400">{lang.proficiency}</span>
                     </div>
                   ))}
                 </div>
@@ -192,25 +192,25 @@ export default function AboutSection({ credentials }) {
         <div className="space-y-3">
           {technicalPillars.map((pillar) => (
             <div
-              className="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-cardLight transition-all duration-200 hover:border-amber-300 hover:shadow-cardElevated"
+              className="rounded-2xl border border-slate-200/90 bg-white p-5 shadow-cardLight transition-all duration-200 hover:border-amber-300 hover:shadow-cardElevated dark:border-slate-800/90 dark:bg-slate-900/90 dark:hover:border-amber-500/50"
               key={pillar.tag}
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="font-gaming text-xs font-bold uppercase text-amber-700">
+                <span className="font-gaming text-xs font-bold uppercase text-amber-700 dark:text-amber-400">
                   {pillar.tag}
                 </span>
                 <span className="text-base">{pillar.icon}</span>
               </div>
-              <h3 className="mt-2 font-display text-lg font-bold text-slate-900">
+              <h3 className="mt-2 font-display text-lg font-bold text-slate-900 dark:text-white">
                 {pillar.title}
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">
+              <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300 sm:text-sm">
                 {pillar.description}
               </p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {pillar.tech.map((t) => (
                   <span
-                    className="rounded-full bg-slate-100 border border-slate-200 px-2.5 py-0.5 font-gaming text-[11px] text-slate-700 font-semibold"
+                    className="rounded-full bg-slate-100 border border-slate-200 px-2.5 py-0.5 font-gaming text-[11px] text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 font-semibold"
                     key={t}
                   >
                     {t}

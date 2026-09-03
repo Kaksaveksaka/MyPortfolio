@@ -58,7 +58,7 @@ export default function ProjectsSection({
                 className={`rounded-2xl border px-4 py-2 font-gaming text-xs font-black uppercase tracking-wider transition-all duration-150 active:scale-95 ${
                   isActive
                     ? "border-amber-500 bg-amber-500 text-slate-950 shadow-sm"
-                    : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
+                    : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-800"
                 }`}
                 key={cat.id}
                 onClick={() => {
@@ -74,7 +74,7 @@ export default function ProjectsSection({
           })}
         </div>
 
-        <div className="flex items-center gap-2 font-gaming text-xs font-bold text-slate-500">
+        <div className="flex items-center gap-2 font-gaming text-xs font-bold text-slate-500 dark:text-slate-400">
           <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
           <span>SHOWING {filteredProjects.length} OF {projects.length} GAMES</span>
         </div>

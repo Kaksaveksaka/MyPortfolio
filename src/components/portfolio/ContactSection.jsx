@@ -65,15 +65,15 @@ export default function ContactSection({ links }) {
       <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
         {/* Left Side: Friendly Pitch */}
         <div className="panel-surface rounded-3xl p-6 sm:p-8 shadow-cardElevated">
-          <h3 className="font-display text-2xl font-black text-slate-900 sm:text-3xl">
+          <h3 className="font-display text-2xl font-black text-slate-900 dark:text-white sm:text-3xl">
             Ready to Level Up Your Next Game?
           </h3>
 
-          <p className="mt-4 text-base leading-relaxed text-slate-600">
+          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
             Whether you're developing high-scale casual titles, 3D mobile games in Unity/Cocos, or exploring XR training worlds, I'd love to connect. Reach out via email, phone, or LinkedIn.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-slate-100 font-gaming text-xs font-bold text-slate-600">
+          <div className="mt-6 flex flex-wrap gap-2 pt-4 border-t border-slate-100 dark:border-slate-800 font-gaming text-xs font-bold text-slate-600 dark:text-slate-400">
             <span>Fast Response Guaranteed · Based in GMT+5:30 (Worldwide Remote)</span>
           </div>
         </div>
@@ -86,11 +86,11 @@ export default function ContactSection({ links }) {
 
             return (
               <div
-                className="group relative flex items-center justify-between rounded-2xl border border-slate-200/90 bg-white p-4 shadow-cardLight transition-all duration-200 hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-cardElevated"
+                className="group relative flex items-center justify-between rounded-2xl border border-slate-200/90 bg-white p-4 shadow-cardLight transition-all duration-200 hover:-translate-y-0.5 hover:border-amber-400 hover:shadow-cardElevated dark:border-slate-800/90 dark:bg-slate-900/90 dark:hover:border-amber-500/50"
                 key={link.label}
               >
                 <div>
-                  <div className="flex items-center gap-2 text-amber-700">
+                  <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
                     <ChannelIcon type={link.label} />
                     <span className="font-gaming text-xs font-bold uppercase tracking-wider">
                       {link.label}
@@ -98,7 +98,7 @@ export default function ContactSection({ links }) {
                   </div>
 
                   <a
-                    className="mt-1 block font-gaming text-base font-bold text-slate-900 transition-colors group-hover:text-amber-700"
+                    className="mt-1 block font-gaming text-base font-bold text-slate-900 dark:text-slate-100 transition-colors group-hover:text-amber-700 dark:group-hover:text-amber-400"
                     href={link.href}
                     onClick={playClickSound}
                     onMouseEnter={playHoverSound}
@@ -112,7 +112,7 @@ export default function ContactSection({ links }) {
                 {/* Copy Button with tactile press */}
                 <button
                   aria-label={`Copy ${link.label}`}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:border-amber-400 hover:bg-amber-50 hover:text-amber-900 active:scale-95 shadow-sm"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 transition hover:border-amber-400 hover:bg-amber-50 hover:text-amber-900 active:scale-95 shadow-sm dark:border-slate-800 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-amber-500/50 dark:hover:bg-slate-700 dark:hover:text-amber-300"
                   onClick={() => handleCopy(link.value, link.label)}
                   title={`Copy ${link.value}`}
                   type="button"

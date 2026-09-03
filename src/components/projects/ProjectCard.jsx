@@ -92,15 +92,15 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
 
   return (
     <article
-      className={`group/card relative flex h-full flex-col rounded-3xl border bg-white p-5 shadow-cardLight transition-all duration-200 hover:-translate-y-1 ${
+      className={`group/card relative flex h-full flex-col rounded-3xl border bg-white dark:bg-slate-900/90 p-5 shadow-cardLight transition-all duration-200 hover:-translate-y-1 ${
         isActive
-          ? "border-amber-500 ring-2 ring-amber-400/30 shadow-cardElevated"
-          : "border-slate-200/90 hover:border-slate-300 hover:shadow-cardHover"
+          ? "border-amber-500 ring-2 ring-amber-400/30 dark:ring-amber-500/20 shadow-cardElevated dark:shadow-[0_10px_35px_-4px_rgba(0,0,0,0.6)]"
+          : "border-slate-200/90 dark:border-slate-800/90 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-cardHover dark:shadow-[0_4px_25px_-4px_rgba(0,0,0,0.5)]"
       }`}
     >
       {/* Media Screen Container */}
       <div
-        className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100"
+        className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100 dark:border-slate-800 dark:bg-slate-950"
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
       >
@@ -112,7 +112,7 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
         </div>
 
         {/* Media Preview Box */}
-        <div className="relative aspect-[4/5] overflow-hidden bg-slate-100">
+        <div className="relative aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-950">
           {hasPoster ? (
             <img
               alt={`${project.title} cover art`}
@@ -126,13 +126,13 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
             />
           ) : (
             <div
-              className={`h-full w-full bg-gradient-to-br from-slate-100 to-slate-200 transition-all duration-500 ${
+              className={`flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 transition-all duration-500 ${
                 isHovered && hasPreviewVideo ? "scale-105 opacity-0" : "opacity-100 group-hover/card:scale-105"
               }`}
               aria-hidden="true"
             >
-              <div className="absolute inset-x-4 bottom-4 z-10 rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 shadow-sm">
-                <p className="truncate font-display text-sm font-bold text-slate-900">
+              <div className="absolute inset-x-4 bottom-4 z-10 rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 shadow-sm dark:border-slate-700 dark:bg-slate-900/90">
+                <p className="truncate font-display text-sm font-bold text-slate-900 dark:text-white">
                   {project.title}
                 </p>
               </div>
@@ -194,15 +194,15 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
       {/* Card Content */}
       <div className="mt-5 flex flex-1 flex-col gap-3">
         <div>
-          <p className="font-gaming text-xs font-bold uppercase tracking-wider text-amber-700">
+          <p className="font-gaming text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
             {project.kicker}
           </p>
-          <h3 className="mt-1 font-display text-2xl font-bold text-slate-900 group-hover/card:text-amber-700 transition-colors">
+          <h3 className="mt-1 font-display text-2xl font-bold text-slate-900 dark:text-slate-100 group-hover/card:text-amber-700 dark:group-hover/card:text-amber-400 transition-colors">
             {project.title}
           </h3>
         </div>
 
-        <p className="text-sm leading-relaxed text-slate-600">
+        <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
           {project.description}
         </p>
 

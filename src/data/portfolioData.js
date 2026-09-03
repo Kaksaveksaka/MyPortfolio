@@ -329,9 +329,10 @@ export const professionalExperience = [
     type: "Indie / Commercial",
     badge: "Tools & Multi-Platform",
     summary:
-      "Designed, developed, and published independent mobile, web, and AR games from concept to release with custom Unity tooling.",
+      "Designed, developed, and published independent mobile, web, and AR games, and built automated AI content production pipelines from concept to release.",
     highlights: [
-      "Designed, developed, and published independent mobile, web, and AR games from concept to release.",
+      "Architected an AI-Assisted Content Automation Pipeline: designed an end-to-end automated video production workflow automating content sourcing, editing workflows, voice generation, subtitles, metadata generation, and publishing.",
+      "Used AI-assisted development for scripting, debugging, testing, and rapid iteration to turn complex media operations into an autonomous, scalable engine.",
       "Developed and published Knife Slice 3D using Unity and C#, released on Android and multiple distribution platforms including Huawei AppGallery, Oppo, Yandex, Playgama, and CrazyGames.",
       "Built a modular Unity Editor SDK bridge tool enabling one-click switching between distribution platforms by automating manifest updates and package reconfiguration.",
       "Created Unity Editor tooling to scatter, replace, and instantiate interactable game objects from 3D models for faster level-building workflows.",
@@ -340,12 +341,15 @@ export const professionalExperience = [
     ],
     metrics: [
       { label: "Stores Distributed", value: "6 Platforms" },
+      { label: "AI Video Pipeline", value: "End-to-End" },
       { label: "Play Rating", value: "5.0 ★" },
       { label: "Downloads", value: "30K+" },
     ],
     stack: [
       "Unity",
       "C#",
+      "AI Automation Pipeline",
+      "AI-Assisted Dev",
       "Custom Editor Tools",
       "Android",
       "ARCore",
@@ -420,6 +424,8 @@ export const technicalSkillsCategories = [
     description: "Automation tools, AI systems, and custom editor extensions.",
     skills: [
       "AI Systems",
+      "AI-Assisted Development",
+      "Content Automation Pipelines",
       "Custom Unity Editor Tools",
       "Build Pipelines",
       "Multi-SDK Platform Automation",
@@ -459,6 +465,12 @@ export const technicalSkillsCategories = [
 ];
 
 export const technicalHighlights = [
+  {
+    title: "AI & Content Automation Pipeline",
+    tools: "Video Automation, Neural Voice, Subtitles, Metadata, LLMs",
+    description:
+      "Designed an end-to-end automated video production workflow: automated content sourcing, programmatic editing, neural voice generation, subtitles, metadata generation, and publishing. Used AI-assisted development for rapid scripting, testing, and iteration.",
+  },
   {
     title: "Unity Custom Editor Tooling",
     tools: "Editor Scripting, Multi-SDK Automation, Object Scatter",
