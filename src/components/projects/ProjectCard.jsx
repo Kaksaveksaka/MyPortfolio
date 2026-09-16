@@ -92,6 +92,7 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
 
   return (
     <article
+      id={project.id}
       className={`group/card relative flex h-full flex-col rounded-3xl border bg-white dark:bg-slate-900/90 p-5 shadow-cardLight transition-all duration-200 hover:-translate-y-1 ${
         isActive
           ? "border-amber-500 ring-2 ring-amber-400/30 dark:ring-amber-500/20 shadow-cardElevated dark:shadow-[0_10px_35px_-4px_rgba(0,0,0,0.6)]"
@@ -183,7 +184,7 @@ export default function ProjectCard({ isActive, onViewDetails, project }) {
               muted
               playsInline
               poster={project.poster ?? undefined}
-              preload="metadata"
+              preload="none"
               ref={videoRef}
               src={project.previewVideo}
             />

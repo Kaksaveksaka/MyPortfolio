@@ -23,20 +23,17 @@ function getAudioContext() {
 }
 
 export function isAudioMuted() {
-  if (typeof window !== "undefined" && window.localStorage) {
+  try {
     const stored = window.localStorage.getItem("gamer_audio_enabled");
-    if (stored !== null) {
-      return stored === "false";
-    }
-  }
-  return false;
+    if (stored !== null) return stored === "false";
+  } catch { /* Storage may be blocked. */ }
+  return !soundEnabled;
 }
 
 export function setAudioMuted(isMuted) {
   soundEnabled = !isMuted;
-  if (typeof window !== "undefined" && window.localStorage) {
-    window.localStorage.setItem("gamer_audio_enabled", (!isMuted).toString());
-  }
+  try { window.localStorage.setItem("gamer_audio_enabled", (!isMuted).toString()); }
+  catch { /* Keep the in-memory preference. */ }
 }
 
 // 1. Cheerful Pop/Tick on Hover

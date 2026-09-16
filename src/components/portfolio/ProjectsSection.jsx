@@ -8,7 +8,7 @@ const filterCategories = [
   { id: "unity-mobile", label: "📱 Unity & Mobile" },
   { id: "cocos-web", label: "⚡ Cocos3D & WebGL" },
   { id: "xr", label: "🥽 XR & VR" },
-  { id: "mega-hits", label: "⭐ 1B+ Mega Hits" },
+  { id: "mega-hits", label: "⭐ Most Played" },
 ];
 
 export default function ProjectsSection({
@@ -60,6 +60,7 @@ export default function ProjectsSection({
                     ? "border-amber-500 bg-amber-500 text-slate-950 shadow-sm"
                     : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-800"
                 }`}
+                aria-pressed={isActive}
                 key={cat.id}
                 onClick={() => {
                   playClickSound();

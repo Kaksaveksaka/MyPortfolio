@@ -36,7 +36,7 @@ export const featuredProjects = [
       "Owned Gamezop's flagship 3D simulation game end-to-end: customer AI systems, live operations, gameplay systems, progression, economy balancing, and monetization.",
     summary:
       "Chef Tycoon represents complete engineering ownership of Gamezop's flagship 3D simulation title. Features intelligent customer AI behaviors, real-time WebSocket and REST dynamic balancing, and analytics-driven live operations that boosted average playtime by 56% and reduced churn by 25%.",
-    standoutMetric: "6.1M+ Plays",
+    standoutMetric: "4.5M+ Plays",
     poster: chefPoster,
     previewVideo: chefPreviewVideo,
     gameUrl: buildGameUrl("chef-tycoon", "xqO4nZ6Kt"),
@@ -44,11 +44,11 @@ export const featuredProjects = [
     businessUrl: "https://business.gamezop.com/html5-games/Chef-Tycoon/xqO4nZ6Kt",
     stack: ["Cocos3D", "Customer AI", "Live Ops", "WebSocket", "Economy Balancing"],
     impact: [
-      "Owned Chef Tycoon end-to-end as Gamezop's flagship 3D simulation title reaching 6.1M+ verified plays.",
+      "Owned Chef Tycoon end-to-end as Gamezop's flagship 3D simulation title reaching 4.5M+ reported plays.",
       "Engineered intelligent customer AI systems, kitchen progression queues, and real-time economy balancing.",
       "Implemented analytics-driven live ops and gameplay balancing, increasing average playtime by 56% and reducing churn by 25%.",
       "Developed real-time systems using WebSocket and REST APIs for live updates, synchronization, and dynamic balancing.",
-      "Reduced startup load time by 40% through modular asset staging and texture compression.",
+      "Built custom pathfinding that adapts to environment changes and customer/bot behavior; optimized rendering with pre-rendered textures.",
     ],
   },
   {
@@ -56,7 +56,7 @@ export const featuredProjects = [
     title: "Fruity Fiesta",
     kicker: "1.2B+ Plays Casual Phenomenon",
     description:
-      "Top-performing casual title improved through reskinning, optimization, and analytics-driven improvements, reaching 1.2B+ verified plays.",
+      "Owned end-to-end development from a supplied single-scene gameplay prototype: menus, additional scenes, abilities, gameplay changes, reskinning, and SDK integrations. Reached 1.2B+ plays.",
     summary:
       "Fruity Fiesta is tuned for hyper-scalable mass engagement: frictionless handoffs between menus and game scenes, juicy feedback states, and high-retention casual loops driving over 1.2 billion gameplays across partner ecosystems.",
     standoutMetric: "1.2B+ Plays",
@@ -67,7 +67,7 @@ export const featuredProjects = [
     businessUrl: "https://business.gamezop.com/html5-games/Fruity-Fiesta/mKZZW9NXW",
     stack: ["Phaser 3", "Reskinning", "Monetization", "Analytics", "Optimization"],
     impact: [
-      "Top-performing Gamezop title improved through reskinning, optimization, and analytics-driven improvements reaching 1.2B+ plays.",
+      "Owned end-to-end development from a supplied single-scene prototype, building menus, additional scenes, abilities, reskinning, gameplay changes, and SDK integrations; reached 1.2B+ plays.",
       "Optimized UI and gameplay integration for ultra-smooth player retention loops.",
       "Balanced retention signals with high-performing monetization placements.",
       "Maintained rock-solid performance across hundreds of distribution partner embeds.",
@@ -89,7 +89,7 @@ export const featuredProjects = [
     businessUrl: "https://business.gamezop.com/html5-games/Rollout/HkRMTzJDck7",
     stack: ["Cocos3D", "Gameplay Tuning", "Obstacle Tuning", "60 FPS Profiling"],
     impact: [
-      "Ranked top 10 among 300+ titles in Gamezop's ecosystem, reaching 114M+ verified plays.",
+      "Ranked top 10 among 300+ titles in Gamezop's ecosystem, reaching 114M+ reported plays.",
       "Owned the project from concept to 3D gameplay mechanics, obstacle curve tuning, and release.",
       "Engineered responsive touch/keyboard steering with low-friction instant restarts.",
       "Delivered lightweight 60 FPS performance across desktop and mobile browsers.",
@@ -112,7 +112,7 @@ export const featuredProjects = [
     businessUrl: "https://business.gamezop.com/html5-games/Sudoku-Classic/SJgx126Qc0H",
     stack: ["Phaser 3", "Backtracking Algorithm", "PWA Caching", "Responsive UI"],
     impact: [
-      "Scaled to 9M+ verified plays across web, PWA, and Google Play Store.",
+      "Scaled to 9M+ reported plays across web, PWA, and Google Play Store.",
       "Engineered heuristic/backtracking puzzle generation algorithm for instant board creation.",
       "Fully responsive in portrait and landscape orientations with offline service worker asset caching.",
       "Fast resume lifecycle protecting user board state across interruptions.",
@@ -142,7 +142,7 @@ export const featuredProjects = [
       "Built a modular Unity Editor SDK bridge tool enabling one-click switching between distribution platforms by automating manifest updates and package reconfiguration.",
       "Created Unity Editor tooling to scatter, replace, and instantiate interactable game objects from 3D models for faster level-building workflows.",
       "Integrated AdMob monetization, in-app purchases (IAP), and multi-language localization.",
-      "Optimized 60 FPS mobile rendering and tactile cutting physics across a wide spectrum of Android devices.",
+      "Optimized runtime performance with profilers and static-mesh techniques; reduced the web build from approximately 40 MB to 17–18 MB.",
     ],
   },
   {
@@ -235,7 +235,7 @@ export const gamezopReferences = [
     id: "chef-tycoon-ref",
     title: "Chef Tycoon",
     category: "Strategy",
-    verifiedPlays: "6.1M plays",
+    verifiedPlays: "4.5M plays",
     publisher: "Gamezop Business",
     highlight: "Flagship 3D restaurant tycoon with customer AI, real-time WebSocket economy, and +56% playtime boost.",
     businessUrl: "https://business.gamezop.com/html5-games/Chef-Tycoon/xqO4nZ6Kt",
@@ -291,20 +291,20 @@ export const professionalExperience = [
     type: "Full-Time",
     badge: "Core Engineering",
     summary:
-      "Built and shipped production games end-to-end, supporting an ecosystem of 300+ games reaching 45M+ monthly users.",
+      "Built and shipped production games end-to-end, supporting a portfolio of 300+ games.",
     highlights: [
       "Built and shipped production games end-to-end covering gameplay systems, UI, progression, monetization, optimization, and release workflows.",
-      "Supported Gamezop's ecosystem of 300+ games reaching 45M+ monthly users.",
+      "Developed games and live-service features within Gamezop's 300+ game portfolio.",
       "Owned Chef Tycoon, Gamezop's flagship 3D simulation game, including customer AI systems, gameplay systems, progression, economy balancing, monetization, and live operations.",
       "Implemented analytics-driven live ops actions and gameplay balancing based on player behavior data, increasing average playtime by 56% and reducing churn by 25%.",
       "Developed real-time systems using WebSocket and REST APIs for live updates, synchronization, and dynamic balancing.",
-      "Architected service-worker cache control and rollout workflows supporting 200+ games.",
+      "Architected repeat-load optimization across 200+ games using GitHub Actions and service-worker injection with no per-game source changes: 11% average improvement across sampled titles, up to 40%.",
       "Developed Android AdTech mediation SDK integrating AdMob with Gamezop's advertising platform.",
-      "Published SDK packages through GitHub and Maven Central and created partner integration documentation.",
+      "Published SDK packages through GitHub and Maven Central with integration documentation; worked with Bosch, LG, and other platform partners on SDK changes and implementation troubleshooting.",
       "Resolved 500+ bugs across 60+ production games and mentored 5 junior developers.",
     ],
     metrics: [
-      { label: "Monthly Users", value: "45M+" },
+      { label: "Games Optimized", value: "200+" },
       { label: "Avg Playtime Boost", value: "+56%" },
       { label: "Churn Reduction", value: "-25%" },
       { label: "Bugs Resolved", value: "500+" },
@@ -467,9 +467,9 @@ export const technicalSkillsCategories = [
 export const technicalHighlights = [
   {
     title: "AI & Content Automation Pipeline",
-    tools: "Video Automation, Neural Voice, Subtitles, Metadata, LLMs",
+    tools: "Kokoro TTS, FFmpeg, Subtitles, Audio Mixing, Batch Processing",
     description:
-      "Designed an end-to-end automated video production workflow: automated content sourcing, programmatic editing, neural voice generation, subtitles, metadata generation, and publishing. Used AI-assisted development for rapid scripting, testing, and iteration.",
+      "Built an end-to-end YouTube workflow using AI-assisted development to source, edit, and upload videos with metadata. Integrated Kokoro text-to-speech, subtitles, audio mixing, FFmpeg rendering/export, and batch processing.",
   },
   {
     title: "Unity Custom Editor Tooling",
@@ -493,7 +493,7 @@ export const technicalHighlights = [
     title: "Reusable Service Workers & PWA",
     tools: "Service Workers, Cache Control, Rollout Workflows",
     description:
-      "Architected service-worker cache control and rollout workflows supporting 200+ games, enabling offline gameplay, seamless cold boots, and deterministic updates.",
+      "Automated service-worker injection through GitHub Actions across 200+ games without per-game source changes. Repeat-load times improved by 11% on average across sampled titles, up to 40%.",
   },
   {
     title: "Real-Time WebSocket State",
@@ -511,7 +511,7 @@ export const technicalHighlights = [
     title: "Scale Optimization & Mentorship",
     tools: "Profiling, Texture Compression, Code Mentorship",
     description:
-      "Resolved 500+ bugs across 60+ production games, slashed cold start times by 40% with asset staging, and mentored 5 junior developers in production practices.",
+      "Resolved 500+ production issues across 60+ games and mentored 5 junior developers through implementation planning, knowledge sharing, debugging support, and occasional code reviews.",
   },
   {
     title: "XR Simulation & Training",

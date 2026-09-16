@@ -1,18 +1,23 @@
 {
   "short_name": "ShoaibKhan",
-  "name": "Shoaib Khan | Game Developer & Systems Architect",
-  "description": "Game Developer & Systems Architect portfolio with 1.3B+ verified plays.",
+  "name": "Shoaib Khan | Game Developer",
+  "description": "Gameplay, LiveOps and performance engineering with Unity, Cocos Creator, HTML5 and XR.",
   "icons": [
     {
-      "src": "/favicon.png",
-      "type": "image/png",
-      "sizes": "192x192 512x512"
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
     }
   ],
   "start_url": "/",
-  "background_color": "#030712",
-  "theme_color": "#00f0ff",
+  "background_color": "#f8fafc",
+  "theme_color": "#f8fafc",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "categories": ["games", "portfolio", "entertainment"]
+  "categories": [
+    "games",
+    "portfolio",
+    "entertainment"
+  ]
 }

@@ -2,7 +2,7 @@ import { playClickSound, playHoverSound } from "../../utils/soundEffects";
 import { useTheme } from "../../utils/useTheme";
 
 export default function ThemeToggle({ className = "" }) {
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark, suggestDark, toggleTheme } = useTheme();
 
   const handleToggle = () => {
     playClickSound();
@@ -13,9 +13,10 @@ export default function ThemeToggle({ className = "" }) {
     <button
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={`group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 shadow-sm transition-all duration-200 hover:border-amber-400 hover:bg-white hover:text-amber-600 active:scale-95 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-amber-500/50 dark:hover:bg-slate-800 dark:hover:text-amber-400 ${className}`}
+      data-system-dark={suggestDark || undefined}
       onClick={handleToggle}
       onMouseEnter={playHoverSound}
-      title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      title={isDark ? "Switch to light mode" : suggestDark ? "Your system uses dark mode. Switch to dark mode" : "Switch to dark mode"}
       type="button"
     >
       <div className="relative h-5 w-5">

@@ -92,7 +92,8 @@ export default function App() {
 
       <Header activeSection={activeId} scrollProgress={scrollProgress} />
 
-      <main className="relative z-10">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:p-3 focus:text-slate-900">Skip to content</a>
+      <main id="main-content" className="relative z-10">
         <HeroSection
           onViewExperience={() => scrollToSection("experience")}
           onViewProjects={() => scrollToSection("projects")}

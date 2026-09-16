@@ -20,7 +20,8 @@ export default function ExperienceSection({ experiences }) {
 
             return (
               <button
-                aria-selected={isActive}
+                aria-expanded={isActive}
+                aria-controls={`experience-${exp.id}`}
                 className={`group w-full rounded-2xl border p-5 text-left transition-all duration-200 ${
                   isActive
                     ? "border-amber-500 bg-white dark:bg-slate-900 shadow-cardElevated ring-1 ring-amber-500/20"
@@ -74,12 +75,10 @@ export default function ExperienceSection({ experiences }) {
         </div>
 
         {/* Right Column: Detailed Experience Dossier */}
-        {(() => {
-          const currentExp = experiences.find((e) => e.id === activeExpId) ?? experiences[0];
-          if (!currentExp) return null;
+        {experiences.map((currentExp) => {
 
           return (
-            <div className="panel-surface rounded-3xl p-6 sm:p-8 shadow-cardElevated">
+            <div key={currentExp.id} id={`experience-${currentExp.id}`} hidden={currentExp.id !== activeExpId} className="experience-panel panel-surface rounded-3xl p-6 sm:p-8 shadow-cardElevated">
               {/* Header Info */}
               <div className="flex flex-wrap items-start justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-5">
                 <div>
@@ -153,7 +152,7 @@ export default function ExperienceSection({ experiences }) {
               </div>
             </div>
           );
-        })()}
+        })}
       </div>
     </Section>
   );

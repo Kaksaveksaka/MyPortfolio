@@ -37,7 +37,6 @@ export default function ProjectSpotlightSection({ project }) {
             <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center">
               {hasPreviewVideo ? (
                 <video
-                  autoPlay
                   className="h-full w-full object-contain"
                   controls
                   key={project.previewVideo}
@@ -45,7 +44,7 @@ export default function ProjectSpotlightSection({ project }) {
                   muted
                   playsInline
                   poster={project.poster ?? undefined}
-                  preload="metadata"
+                  preload="none"
                   src={project.previewVideo}
                 />
               ) : hasPreviewImages ? (
@@ -241,13 +240,12 @@ export default function ProjectSpotlightSection({ project }) {
                   {project.supportingVideos.map((clip) => (
                     <div className="metric-card overflow-hidden p-0" key={clip.src}>
                       <video
-                        autoPlay
                         className="aspect-video w-full object-cover bg-slate-950"
                         controls
                         loop
                         muted
                         playsInline
-                        preload="metadata"
+                        preload="none"
                         src={clip.src}
                       />
                       <div className="p-3">

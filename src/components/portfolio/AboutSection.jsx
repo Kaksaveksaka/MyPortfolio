@@ -36,8 +36,8 @@ const technicalPillars = [
 ];
 
 const careerStats = [
-  { metric: "1.3B+", icon: "⭐", label: "Verified Plays" },
-  { metric: "45M+", icon: "👥", label: "Monthly Users" },
+  { metric: "1.3B+", icon: "⭐", label: "Reported Plays" },
+  { metric: "200+", icon: "👥", label: "Games Optimized" },
   { metric: "500+", icon: "🛠️", label: "Bugs Resolved" },
   { metric: "+56%", icon: "⚡", label: "Avg Playtime" },
 ];
@@ -62,7 +62,7 @@ export default function AboutSection({ credentials }) {
             </div>
             
             <p className="text-base leading-relaxed text-slate-800 dark:text-slate-200 sm:text-lg">
-              Over the past <span className="font-bold text-slate-950 dark:text-white">5 years</span>, I have specialized as a Game Developer and Systems Engineer building games across <span className="font-bold text-slate-950 dark:text-white">Unity, HTML5, Mobile, and XR platforms</span>. At <span className="font-bold text-slate-950 dark:text-white">Gamezop</span>, I support an ecosystem of 300+ games reaching 45M+ monthly users and have owned flagship 3D titles and platform tooling.
+              Over the past <span className="font-bold text-slate-950 dark:text-white">5 years</span>, I have specialized as a Game Developer and Systems Engineer building games across <span className="font-bold text-slate-950 dark:text-white">Unity, HTML5, Mobile, and XR platforms</span>. At <span className="font-bold text-slate-950 dark:text-white">Gamezop</span>, I support a portfolio of 300+ games and have owned flagship 3D titles and platform tooling.
             </p>
 
             <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">

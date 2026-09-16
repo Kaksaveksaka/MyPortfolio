@@ -26,3 +26,6 @@ Thumbs.db
 
 # Python venv (if present)
 .venv/
+
+.prerender/
+tmp/qa/

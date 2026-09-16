@@ -14,7 +14,7 @@ function ExternalIcon() {
 export default function ReferencesSection({ items }) {
   return (
     <Section
-      description="Direct links to official Gamezop Business distribution listings and verified play volume."
+      description="Official distribution links. Play counts are reported snapshots and may differ from current listings."
       id="references"
       title="References &amp; Official Distribution 🏆"
     >

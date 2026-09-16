@@ -1,9 +1,9 @@
 import Button from "../ui/Button";
 
 const heroMetrics = [
-  { value: "1.3B+", icon: "⭐", label: "Verified Plays", sub: "Global distribution hits", color: "text-amber-600" },
+  { value: "1.3B+", icon: "⭐", label: "Reported Plays", sub: "Global distribution hits", color: "text-amber-600" },
   { value: "5 Yrs", icon: "🚀", label: "Experience", sub: "Unity, HTML5, Mobile & XR", color: "text-blue-600" },
-  { value: "45M+", icon: "👥", label: "Monthly Users", sub: "Ecosystem of 300+ games", color: "text-emerald-600" },
+  { value: "200+", icon: "👥", label: "Games Optimized", sub: "11% average repeat-load gain", color: "text-emerald-600" },
   { value: "+56%", icon: "📈", label: "Playtime Growth", sub: "Analytics-driven LiveOps", color: "text-rose-600" },
 ];
 
@@ -19,13 +19,13 @@ const highlights = [
     icon: "👨‍🍳",
     title: "Flagship 3D Chef Tycoon & AI",
     detail: "Owned 3D simulation game end-to-end: customer AI behaviors, real-time WebSocket state, and economy balancing.",
-    badge: "Customer AI · LiveOps · 6.1M+",
+    badge: "Customer AI · LiveOps · 4.5M+",
     color: "border-amber-200 bg-amber-50 text-amber-800",
   },
   {
     icon: "🌐",
     title: "Mass Scale Casual Hits & XR",
-    detail: "Improved 1.2B+ hit Fruity Fiesta, 114M+ runner Rollout, and engineered Oculus Quest VR training modules.",
+    detail: "Developed Fruity Fiesta from a supplied prototype (1.2B+ plays), built Rollout (114M+ plays), and created Oculus Quest training modules.",
     badge: "1.2B+ Plays · Oculus Quest · PWA",
     color: "border-purple-200 bg-purple-50 text-purple-800",
   },
@@ -44,21 +44,22 @@ export default function HeroSection({ onViewProjects, onViewExperience }) {
             </div>
 
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl xl:text-6xl">
-              Crafting Games That <span className="text-amber-600 dark:text-amber-400">Bring Joy to Millions</span>
+              Shoaib Khan <span className="text-amber-600 dark:text-amber-400">Game Developer</span>
             </h1>
 
             <p className="mt-3 font-gaming text-base font-bold text-slate-800 dark:text-slate-200 sm:text-lg">
-              Shoaib Khan — Game Developer &amp; Systems Engineer 🕹️
+              Gameplay, LiveOps &amp; Performance Engineering
             </p>
 
             <p className="mt-3 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300">
-              Specializing in Unity, gameplay systems, and production game tooling with 5 years of experience building games across Unity, HTML5, Mobile, and XR platforms. Experienced in gameplay programming, AI systems, live operations, analytics-driven improvements, monetization, SDK integration, custom Unity Editor tooling, and multi-platform publishing.
+              Game developer with 5 years of professional and independent experience across Cocos Creator/TypeScript, Unity/C#, mobile, HTML5/WebGL, and XR. I own released games and live-service features, combining gameplay engineering with performance optimization, Android SDK development, and delivery automation.
             </p>
 
             {/* Action Buttons */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Button
                 className="px-7 py-3 text-sm font-black shadow-sm"
+                href="#projects"
                 onClick={onViewProjects}
                 variant="primary"
               >

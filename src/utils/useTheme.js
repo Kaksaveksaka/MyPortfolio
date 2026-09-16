@@ -1,73 +1,38 @@
 import { useEffect, useState } from "react";
 
-const THEME_KEY = "shoaib_portfolio_theme";
-
+// Ignore preferences that older versions automatically saved from the system.
+const THEME_KEY = "shoaib_portfolio_theme_v2";
 export function getInitialTheme() {
-  if (typeof window === "undefined") return "light";
-
-  const savedTheme = localStorage.getItem(THEME_KEY);
-  if (savedTheme === "dark" || savedTheme === "light") {
-    return savedTheme;
-  }
-
-  // System preference
-  if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    return "dark";
-  }
-
-  return "light";
+  try { return window.localStorage.getItem(THEME_KEY) === "dark" ? "dark" : "light"; }
+  catch { return "light"; }
 }
-
 export function useTheme() {
-  const [theme, setTheme] = useState(getInitialTheme);
-
+  const [theme, setTheme] = useState("light");
+  const [prefersDark, setPrefersDark] = useState(false);
+  const [ready, setReady] = useState(false);
   useEffect(() => {
-    const root = document.documentElement;
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-
-    if (theme === "dark") {
-      root.classList.add("dark");
-      root.style.colorScheme = "dark";
-      if (metaThemeColor) {
-        metaThemeColor.setAttribute("content", "#0b1120");
-      }
-    } else {
-      root.classList.remove("dark");
-      root.style.colorScheme = "light";
-      if (metaThemeColor) {
-        metaThemeColor.setAttribute("content", "#f8fafc");
-      }
-    }
-
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-    } catch {
-      // Ignore localStorage errors in private browsing
-    }
-  }, [theme]);
-
-  // Listen for system theme changes if user hasn't explicitly set a preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = (e) => {
-      const savedTheme = localStorage.getItem(THEME_KEY);
-      if (!savedTheme) {
-        setTheme(e.matches ? "dark" : "light");
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    setTheme(getInitialTheme());
+    setReady(true);
+    const media = window.matchMedia?.("(prefers-color-scheme: dark)");
+    if (!media) return;
+    const update = () => setPrefersDark(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
   }, []);
-
+  useEffect(() => {
+    if (!ready) return;
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.style.colorScheme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      "content", theme === "dark" ? "#0b1120" : "#f8fafc",
+    );
+  }, [theme, ready]);
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    try { window.localStorage.setItem(THEME_KEY, next); }
+    catch { /* Theme selection still works without browser storage. */ }
   };
-
-  return {
-    theme,
-    isDark: theme === "dark",
-    setTheme,
-    toggleTheme,
-  };
+  return { theme, isDark: theme === "dark", suggestDark: prefersDark && theme === "light", toggleTheme };
 }
