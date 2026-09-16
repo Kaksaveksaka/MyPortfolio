@@ -26,6 +26,10 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright')
    const toggle=page.getByRole('button',{name:'Switch to dark mode',exact:true});
    assert.equal(await page.locator('html').evaluate(e=>e.classList.contains('dark')),false);
    assert.equal(await toggle.getAttribute('data-system-dark'),system==='dark'?'true':null);
+   if (system === 'dark') {
+    await page.waitForFunction(() => !document.querySelector('[data-system-dark]'), { }, { timeout: 5000 });
+    assert.equal(await page.locator('html').evaluate(e=>e.classList.contains('dark')),false);
+   }
    await toggle.click();
    await page.getByRole('button',{name:'Switch to light mode',exact:true}).waitFor();
    assert.equal(await page.locator('html').evaluate(e=>e.classList.contains('dark')),true);

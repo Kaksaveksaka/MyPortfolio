@@ -10,6 +10,14 @@ export function useTheme() {
   const [theme, setTheme] = useState("light");
   const [prefersDark, setPrefersDark] = useState(false);
   const [ready, setReady] = useState(false);
+  const [suggestionDismissed, setSuggestionDismissed] = useState(false);
+  const suggestDark = ready && prefersDark && theme === "light" && !suggestionDismissed;
+
+  useEffect(() => {
+    if (!suggestDark) return;
+    const timer = window.setTimeout(() => setSuggestionDismissed(true), 3000);
+    return () => window.clearTimeout(timer);
+  }, [suggestDark]);
   useEffect(() => {
     setTheme(getInitialTheme());
     setReady(true);
@@ -29,10 +37,11 @@ export function useTheme() {
     );
   }, [theme, ready]);
   const toggleTheme = () => {
+    setSuggestionDismissed(true);
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
     try { window.localStorage.setItem(THEME_KEY, next); }
     catch { /* Theme selection still works without browser storage. */ }
   };
-  return { theme, isDark: theme === "dark", suggestDark: prefersDark && theme === "light", toggleTheme };
+  return { theme, isDark: theme === "dark", suggestDark, toggleTheme };
 }

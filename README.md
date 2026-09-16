@@ -45,7 +45,7 @@ and the social preview. Keep sitemap dates tied to actual content changes. Secti
 anchors are not separate pages and must not be added as sitemap URLs.
 
 Fresh visits use light mode. A dark system preference highlights the theme button
-without switching themes. Explicit user choices persist under the versioned
+for three seconds without switching themes. The highlight also dismisses on a manual toggle and stays dismissed for the rest of the page visit. Explicit user choices persist under the versioned
 `shoaib_portfolio_theme_v2` key; inaccessible browser storage is supported.
 
 The share image is `public/social-preview.png` (1200 × 630). Project play counts
